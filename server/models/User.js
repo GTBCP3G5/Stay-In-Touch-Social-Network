@@ -1,7 +1,8 @@
 const { Schema, model } = require("mongoose");
+// use bcrypt for password stuff
 const bcrypt = require("bcrypt");
-
-// Import schema from other models here...
+// imports email validator from the validator npm
+import isEmail from "validator/lib/isEmail";
 
 const userSchema = new Schema({
 	username: {
@@ -14,17 +15,30 @@ const userSchema = new Schema({
 		type: String,
 		required: true,
 		unique: true,
-		match: [/.+@.+\..+/, "Must match an email address!"],
+		validate: [isEmail, "Please enter a valid email address"],
+	},
+	// github username
+	ghun: {
+		type: String,
+		trim: true,
 	},
 	password: {
 		type: String,
 		required: true,
 		minlength: 5,
 	},
+	// user's post referencing the Post.js file schema
 	posts: [
 		{
 			type: Schema.Types.ObjectId,
 			ref: "Post",
+		},
+	],
+	// user's list of friends, referencing User.js
+	friends: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "User",
 		},
 	],
 });
