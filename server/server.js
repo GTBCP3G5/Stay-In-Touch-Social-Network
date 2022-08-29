@@ -19,24 +19,22 @@ app.use(express.json());
 
 // Serve up static assets
 if (process.env.NODE_ENV === "production") {
-<<<<<<< HEAD
   app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/"));
-=======
 	app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
 app.get("/", (req, res) => {
 	res.sendFile(path.join(__dirname, "../client/"));
->>>>>>> 3549cda440f6ee75bafec566fc6ead2d37bb20bf
-});
+})
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
-<<<<<<< HEAD
+
+
   await server.start();
   server.applyMiddleware({ app });
 
@@ -46,7 +44,7 @@ db.once("open", () => {
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });
 });
-=======
+
 	await server.start();
 	server.applyMiddleware({ app });
 
@@ -59,7 +57,6 @@ db.once("open", () => {
 		});
 	});
 };
->>>>>>> 3549cda440f6ee75bafec566fc6ead2d37bb20bf
 
 // Call the async function to start the server
 startApolloServer(typeDefs, resolvers);
