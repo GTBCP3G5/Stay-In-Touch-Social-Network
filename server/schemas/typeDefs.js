@@ -10,31 +10,32 @@ const typeDefs = gql`
     posts: [Post]!
   }
 
-  type Post {
-    _id: ID
-    postText: String
-    postAuthor: String
-    createdAt: String
-    comments: [Comment]!
-  }
+	type Post {
+		_id: ID
+		postText: String
+		postAuthor: String
+		createdAt: String
+		comments: [Comment]!
+	}
 
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
-  }
+	type Comment {
+		_id: ID
+		commentText: String
+		commentAuthor: String
+		createdAt: String
+	}
 
-  type Auth {
-    token: ID!
-    user: User
-  }
-
-  type Query {
+	type Auth {
+		token: ID!
+		user: User
+	}
+  
+    type Query {
     users: [User]
     user(username: String!): User
-    posts: [Post!]!
-    post(postId: ID!): Post
+    thoughts(username: String): [Thought]
+    thought(thoughtId: ID!): Thought
+    me: User
   }
 
   type Mutation {
@@ -45,6 +46,6 @@ const typeDefs = gql`
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
   }
-`;
+
 
 module.exports = typeDefs;
