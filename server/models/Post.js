@@ -1,11 +1,11 @@
-const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+const { Schema, model } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 
 const postSchema = new Schema({
   postText: {
     type: String,
-    required: 'You need to leave a post!',
-    minlength: 1,
+    required: "You need to add a post",
+    minlength: 10,
     maxlength: 280,
     trim: true,
   },
@@ -40,6 +40,6 @@ const postSchema = new Schema({
   ],
 });
 
-const Post = model('Post', postSchema);
+const Post = model("Post", postSchema);
 
 module.exports = Post;

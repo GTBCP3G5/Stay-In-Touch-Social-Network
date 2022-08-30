@@ -1,7 +1,6 @@
-const { User, Post } = require("../models");
-
 // Authentication Purposes
 const { AuthenticationError } = require("apollo-server-express");
+const { User, Post } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -13,16 +12,22 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate("posts");
     },
+    // GET all posts
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Post.find(params).sort({ createdAt: -1 });
     },
+    // Get single post by ID
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
     },
   },
+
   //TODO: Work on USER routes
   Mutation: {
+    addPost: async (parent, { postText, postAuthor }) => {
+      return Post.create({ postText, postAuthor });
+    },
     addUser: async (parent, { username, email, password }) => {
       // First we create the user
       const user = await User.create({ username, email, password });
