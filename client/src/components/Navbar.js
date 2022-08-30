@@ -45,8 +45,8 @@ export default function Navbar () {
                 <div className="bg-dark p-4">
                     {/* <h5 className="text-white h4">Collapsed content</h5>
                     <span className="text-muted">Toggleable via the navbar brand.</span> */}
-                    <nav style={navbar} class="navbar fixed-top">
-                    <div class="container-fluid">
+                    <nav style={navbar} className="navbar fixed-top">
+                    <div className="container-fluid">
                         {/* <a className="navbar-brand" href="#">Offcanvas navbar</a> */}
                         <button style={navButton} className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                             <span className="navbar-toggler-icon"></span>
@@ -86,7 +86,9 @@ export default function Navbar () {
             <nav style={navbar} className="nav">
             <ul style={navContainer} className="left hide-on-med-and-down">
                 <li style={navLinks}>
+                    <a href="/home">
                     <i className="material-icons">home</i>
+                    </a>
                 </li>
                 <li style={navLinks}>
                     <a href="/create_post">New Post</a>
