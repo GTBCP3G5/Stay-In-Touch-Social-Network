@@ -15,7 +15,7 @@ const resolvers = {
     // GET all posts
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Post.find(params).sort({ createdAt: -1 });
+      return await Post.find(params).populate("comments");
     },
     // Get single post by ID
     post: async (parent, { postId }) => {
@@ -23,11 +23,8 @@ const resolvers = {
     },
   },
 
-  // User mutations
+  // Mutations for USERS, POSTS, COMMENTS, and FRIENDS
   Mutation: {
-    addPost: async (parent, { postText, postAuthor }) => {
-      return Post.create({ postText, postAuthor });
-    },
     addUser: async (parent, { username, email, password }) => {
       // First we create the user
       const user = await User.create({ username, email, password });
@@ -59,10 +56,12 @@ const resolvers = {
       // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
     },
+
+    // ROUTES FOR POSTS
     addPost: async (parent, { postText, postAuthor }) => {
       const post = await Post.create({ postText, postAuthor });
 
-      await User.findOneAndUpdate(
+      await Post.findOneAndUpdate(
         { username: postAuthor },
         { $addToSet: { posts: post._id } }
       );
