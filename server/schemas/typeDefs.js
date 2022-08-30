@@ -9,6 +9,7 @@ const typeDefs = gql`
     ghun: String
 		password: String
 		posts: [Post]!
+    friends: [Friends]
 	}
 
 	type Post {
