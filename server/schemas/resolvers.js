@@ -18,8 +18,8 @@ const resolvers = {
       return await Post.find(params).populate("comments");
     },
     // Get single post by ID
-    post: async (parent, { postId }) => {
-      return Post.findOne({ _id: postId });
+    post: async (parent, args) => {
+      return await Post.findById(args.id);
     },
   },
 
