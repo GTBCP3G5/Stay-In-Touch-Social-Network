@@ -1,14 +1,17 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User, Post } = require('../models');
-const { signToken } = require('../utils/auth');
+const { User, Post } = require("../models");
+
+// Authentication Purposes
+const { AuthenticationError } = require("apollo-server-express");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
+  // GET routes for users
   Query: {
     users: async () => {
-      return User.find().populate('posts');
+      return User.find().populate("posts");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('posts');
+      return User.findOne({ username }).populate("posts");
     },
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -18,7 +21,7 @@ const resolvers = {
       return Post.findOne({ _id: postId });
     },
   },
-
+  //TODO: Work on USER routes
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
       // First we create the user
@@ -34,7 +37,7 @@ const resolvers = {
 
       // If there is no user with that email address, return an Authentication error stating so
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError("No user found with this email address");
       }
 
       // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was provided
@@ -42,7 +45,7 @@ const resolvers = {
 
       // If the password is incorrect, return an Authentication error stating so
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
 
       // If email and password are correct, sign user into the application with a JWT
