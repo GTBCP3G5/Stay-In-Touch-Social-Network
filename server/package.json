@@ -1,51 +1,27 @@
 {
-  "name": "project3-group5",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server/server.js",
-  "scripts": {
-    "start": "node server/server.js",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "autoprefixer": "^10.4.8",
-    "concurrently": "^5.1.0",
-    "postcss": "^8.4.16",
-    "tailwindcss": "^3.1.8"
-  },
-  "dependencies": {
-    "apollo-server-express": "^3.10.2",
-    "express": "^4.18.1",
-    "graphql": "^16.6.0"
-  },
-	"name": "server",
+	"name": "project3-group5",
 	"version": "1.0.0",
 	"description": "",
-	"main": "server.js",
+	"main": "server/server.js",
 	"scripts": {
-		"start": "node server.js",
-		"seed": "node seeders/seed.js",
-		"watch": "node server.js"
+		"start": "node server/server.js",
+		"develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+		"install": "cd server && npm i && cd ../client && npm i",
+		"seed": "cd server && npm run seed",
+		"build": "cd client && npm run build"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
+	"devDependencies": {
+		"autoprefixer": "^10.4.8",
+		"concurrently": "^5.1.0",
+		"postcss": "^8.4.16",
+		"tailwindcss": "^3.1.8"
+	},
 	"dependencies": {
-		"bcrypt": "^5.0.1",
-		"jsonwebtoken": "^8.5.1",
 		"apollo-server-express": "^3.10.2",
 		"express": "^4.18.1",
-		"graphql": "^16.6.0",
-		"mongoose": "^6.5.3",
-		"validator": "^13.7.0"
-	},
-	"devDependencies": {
-		"nodemon": "^2.0.3"
+		"graphql": "^16.6.0"
 	}
 }
