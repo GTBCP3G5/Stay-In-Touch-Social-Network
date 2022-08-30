@@ -1,7 +1,8 @@
 const { Schema, model } = require("mongoose");
+// use bcrypt for password stuff
 const bcrypt = require("bcrypt");
-
-// Import schema from other models here...
+// imports email validator from the validator npm
+import isEmail from "validator/lib/isEmail";
 
 const userSchema = new Schema({
 	username: {
@@ -9,42 +10,54 @@ const userSchema = new Schema({
 		required: true,
 		unique: true,
 		trim: true,
-	  },
-	  email: {
+	},
+	email: {
 		type: String,
 		required: true,
 		unique: true,
-		match: [/.+@.+\..+/, 'Must match an email address!'],
-	  },
-	  password: {
+		validate: [isEmail, "Please enter a valid email address"],
+	},
+	// github username
+	ghun: {
+		type: String,
+		trim: true,
+	},
+	password: {
 		type: String,
 		required: true,
 		minlength: 5,
-	  },
-	  posts: [
+	},
+	// user's post referencing the Post.js file schema
+	posts: [
 		{
-		  type: Schema.Types.ObjectId,
-		  ref: 'Post',
+			type: Schema.Types.ObjectId,
+			ref: "Post",
 		},
-	  ],
-	});
-	
-	// set up pre-save middleware to create password
-	userSchema.pre('save', async function (next) {
-	  if (this.isNew || this.isModified('password')) {
+	],
+	// user's list of friends, referencing User.js
+	friends: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "User",
+		},
+	],
+});
+
+// set up pre-save middleware to create password
+userSchema.pre("save", async function (next) {
+	if (this.isNew || this.isModified("password")) {
 		const saltRounds = 10;
 		this.password = await bcrypt.hash(this.password, saltRounds);
-	  }
-	
-	  next();
-	});
-	
-	// compare the incoming password with the hashed password
-	userSchema.methods.isCorrectPassword = async function (password) {
-	  return bcrypt.compare(password, this.password);
-	};
-	
-	const User = model('User', userSchema);
-	
-	module.exports = User;
-	
+	}
+
+	next();
+});
+
+// compare the incoming password with the hashed password
+userSchema.methods.isCorrectPassword = async function (password) {
+	return bcrypt.compare(password, this.password);
+};
+
+const User = model("User", userSchema);
+
+module.exports = User;
