@@ -33,6 +33,10 @@ export default function Navbar () {
         alignItems: "center"
     }
 
+    const navButton = {
+        backgroundColor: "#423e4f"
+    }
+
     // For smaller screens
     if(width < 1000) {
         currentNav = (
@@ -44,8 +48,8 @@ export default function Navbar () {
                     <nav style={navbar} class="navbar fixed-top">
                     <div class="container-fluid">
                         {/* <a className="navbar-brand" href="#">Offcanvas navbar</a> */}
-                        <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                        <span className="navbar-toggler-icon"></span>
+                        <button style={navButton} className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                            <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="offcanvas offcanvas-start" id="offcanvasNavbar">
                         <div className="offcanvas-body">
