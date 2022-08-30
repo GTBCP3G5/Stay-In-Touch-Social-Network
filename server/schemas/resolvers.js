@@ -23,7 +23,7 @@ const resolvers = {
     },
   },
 
-  //TODO: Work on USER routes
+  // User mutations
   Mutation: {
     addPost: async (parent, { postText, postAuthor }) => {
       return Post.create({ postText, postAuthor });
