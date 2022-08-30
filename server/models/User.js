@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 // use bcrypt for password stuff
 const bcrypt = require("bcrypt");
 // imports email validator from the validator npm
-import isEmail from "validator/lib/isEmail";
+const isEmail = require("validator/lib/isEmail");
 
 const userSchema = new Schema({
 	username: {
