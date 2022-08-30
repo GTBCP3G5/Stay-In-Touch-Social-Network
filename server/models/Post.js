@@ -4,8 +4,8 @@ const dateFormat = require("../utils/dateFormat");
 const postSchema = new Schema({
   postText: {
     type: String,
-    required: "You need to add a post",
-    minlength: 10,
+    required: true,
+    minlength: 5,
     maxlength: 280,
     trim: true,
   },
