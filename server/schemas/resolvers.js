@@ -23,11 +23,11 @@ const resolvers = {
     },
   },
 
-  // Mutations for USERS, POSTS, COMMENTS, and FRIENDS
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      // First we create the user
-      const user = await User.create({ username, email, password });
+    // SIGN UP ROUTE
+    addUser: async (parent, { username, email, password, gitHub }) => {
+      // Creating the user
+      const user = await User.create({ username, email, password, gitHub });
       // To reduce friction for the user, we immediately sign a JSON Web Token and log the user in after they are created
       const token = signToken(user);
       // Return an `Auth` object that consists of the signed token and user's information
@@ -65,7 +65,6 @@ const resolvers = {
         { username: postAuthor },
         { $addToSet: { posts: post._id } }
       );
-
       return post;
     },
     updatePost: async (parent, { id, postText }) => {
@@ -79,6 +78,7 @@ const resolvers = {
       return Post.findOneAndDelete({ _id: postId });
     },
 
+    // ROUTES FOR COMMENTS
     addComment: async (parent, { postId, commentText, commentAuthor }) => {
       return Post.findOneAndUpdate(
         { _id: postId },
