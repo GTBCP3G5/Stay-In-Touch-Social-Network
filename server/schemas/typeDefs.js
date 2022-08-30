@@ -9,7 +9,7 @@ const typeDefs = gql`
     ghun: String
 		password: String!
 		posts: [Post]
-    friends: [Friends]
+    friends: [Friend]
 	}
 
 	type Post {
@@ -19,6 +19,11 @@ const typeDefs = gql`
 		createdAt: String!
 		comments: [Comment]
 	}
+
+  type Friend {
+    _id: ID!
+    username: String!
+  }
 
 	type Comment {
 		_id: ID!
@@ -35,8 +40,8 @@ const typeDefs = gql`
     type Query {
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
+    posts(username: String): [Post]
+    post(thoughtId: ID!): Post
     me: User
   }
 
