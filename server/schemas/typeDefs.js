@@ -6,6 +6,7 @@ const typeDefs = gql`
     _id: ID
     username: String!
     email: String!
+    ghun: String
     password: String!
     posts: [Post]!
   }
