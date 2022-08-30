@@ -18,8 +18,8 @@ const resolvers = {
       return await Post.find(params).populate("comments");
     },
     // Get single post by ID
-    post: async (parent, args) => {
-      return await Post.findById(args.id);
+    post: async (parent, { postId }) => {
+      return Post.findOne({ _id: postId });
     },
   },
 
@@ -57,7 +57,7 @@ const resolvers = {
       return { token, user };
     },
 
-    // ROUTES FOR POSTS
+    // Mutation to Add a Post
     addPost: async (parent, { postText, postAuthor }) => {
       const post = await Post.create({ postText, postAuthor });
 
@@ -67,6 +67,17 @@ const resolvers = {
       );
 
       return post;
+    },
+    updatePost: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findByIdAndUpdate(context.user._id, args, {
+          new: true,
+        });
+      }
+      throw new AuthenticationError("Please log in to to updated your post");
+    },
+    removePost: async (parent, { postId }) => {
+      return Post.findOneAndDelete({ _id: postId });
     },
     addComment: async (parent, { postId, commentText, commentAuthor }) => {
       return Post.findOneAndUpdate(
@@ -79,9 +90,6 @@ const resolvers = {
           runValidators: true,
         }
       );
-    },
-    removePost: async (parent, { postId }) => {
-      return Post.findOneAndDelete({ _id: postId });
     },
     removeComment: async (parent, { postId, commentId }) => {
       return Post.findOneAndUpdate(
