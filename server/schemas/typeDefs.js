@@ -7,9 +7,10 @@ const typeDefs = gql`
     username: String!
     email: String!
     ghun: String
-    password: String!
-    posts: [Post]!
-  }
+		password: String
+		posts: [Post]!
+    friends: [Friends]
+	}
 
 	type Post {
 		_id: ID
@@ -47,6 +48,6 @@ const typeDefs = gql`
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
   }
-
+`;
 
 module.exports = typeDefs;
