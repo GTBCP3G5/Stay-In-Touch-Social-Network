@@ -1,52 +1,52 @@
 [
-  {
-    "username": "Josh",
-    "email": "bkernighan@techfriends.dev",
-    "password": "password01"
-  },
-  {
-    "username": "Josh",
-    "email": "mkanatalexander@techfriends.dev",
-    "password": "password02"
-  },
-  {
-    "username": "Eric",
-    "email": "wtls@techfriends.dev",
-    "password": "password03"
-  },
-  {
-    "username": "Cat",
-    "email": "kbeck@techfriends.dev",
-    "password": "password04"
-  },
-  {
-    "username": "Kimberly",
-    "email": "evberard@techfriends.dev",
-    "password": "password05"
-  },
-  {
-    "username": "Josh",
-    "email": "akay@techfriends.dev",
-    "password": "password06"
-  },
-  {
-    "username": "Kimberly",
-    "email": "choare@techfriends.dev",
-    "password": "password07"
-  },
-  {
-    "username": "Cat",
-    "email": "dthomas@techfriends.dev",
-    "password": "password08"
-  },
-  {
-    "username": "Eric",
-    "email": "dknuth@techfriends.dev",
-    "password": "password09"
-  },
-  {
-    "username": "Eric",
-    "email": "lernantino@techfriends.dev",
-    "password": "password10"
-  }
+	{
+		"username": "Josh",
+		"email": "bkernighan@techfriends.dev",
+		"password": "password01"
+	},
+	{
+		"username": "Joshua",
+		"email": "mkanatalexander@techfriends.dev",
+		"password": "password02"
+	},
+	{
+		"username": "Eric",
+		"email": "wtls@techfriends.dev",
+		"password": "password03"
+	},
+	{
+		"username": "Cat",
+		"email": "kbeck@techfriends.dev",
+		"password": "password04"
+	},
+	{
+		"username": "Kimberly",
+		"email": "evberard@techfriends.dev",
+		"password": "password05"
+	},
+	{
+		"username": "Jordan",
+		"email": "akay@techfriends.dev",
+		"password": "password06"
+	},
+	{
+		"username": "Keegan",
+		"email": "choare@techfriends.dev",
+		"password": "password07"
+	},
+	{
+		"username": "Scotty",
+		"email": "dthomas@techfriends.dev",
+		"password": "password08"
+	},
+	{
+		"username": "Fiona",
+		"email": "dknuth@techfriends.dev",
+		"password": "password09"
+	},
+	{
+		"username": "Aura",
+		"email": "lernantino@techfriends.dev",
+		"password": "password10"
+	}
 ]
