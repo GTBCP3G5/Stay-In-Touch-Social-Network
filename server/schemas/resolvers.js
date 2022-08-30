@@ -7,7 +7,7 @@ const resolvers = {
 	// GET routes for users
 	Query: {
 		users: async () => {
-			return User.find().populate("posts");
+			return User.find({});
 		},
 		user: async (parent, { username }) => {
 			return User.findOne({ username }).populate("posts");
