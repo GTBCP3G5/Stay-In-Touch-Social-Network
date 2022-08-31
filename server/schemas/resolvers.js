@@ -15,19 +15,19 @@ const resolvers = {
     // GET all posts
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return await Post.find(params).populate("comments");
+      return Post.find(params).populate("comments");
     },
     // Get single post by ID
-    post: async (parent, { postId }) => {
-      return await Post.findOne({ _id: postId });
+    post: async (parent, { _id }) => {
+      return await Post.findById({ _id });
     },
   },
 
-  // Mutations for USERS, POSTS, COMMENTS, and FRIENDS
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      // First we create the user
-      const user = await User.create({ username, email, password });
+    // SIGN UP ROUTE
+    addUser: async (parent, { username, email, password, gitHub }) => {
+      // Creating the user
+      const user = await User.create({ username, email, password, gitHub });
       // To reduce friction for the user, we immediately sign a JSON Web Token and log the user in after they are created
       const token = signToken(user);
       // Return an `Auth` object that consists of the signed token and user's information
@@ -65,20 +65,16 @@ const resolvers = {
         { username: postAuthor },
         { $addToSet: { posts: post._id } }
       );
-
       return post;
     },
-    updatePost: async (parent, { id, postText }) => {
-      return await Post.findOneAndUpdate(
-        { _id: id },
-        { postText },
-        { new: true }
-      );
+    updatePost: async (parent, { _id, postText }) => {
+      return await Post.findOneAndUpdate({ _id }, { postText }, { new: true });
     },
     removePost: async (parent, { postId }) => {
       return Post.findOneAndDelete({ _id: postId });
     },
 
+    // ROUTES FOR COMMENTS
     addComment: async (parent, { postId, commentText, commentAuthor }) => {
       return Post.findOneAndUpdate(
         { _id: postId },
@@ -91,9 +87,15 @@ const resolvers = {
         }
       );
     },
-
+    updateComment: async (parent, { postId, commentId, commentText }) => {
+      return await Post.findOneAndUpdate(
+        { _id: postId, "comments._id": commentId },
+        { "comments.$.commentText": commentText },
+        { new: true }
+      );
+    },
     removeComment: async (parent, { postId, commentId }) => {
-      return Post.findOneAndUpdate(
+      return await Post.findOneAndUpdate(
         { _id: postId },
         { $pull: { comments: { _id: commentId } } },
         { new: true }
