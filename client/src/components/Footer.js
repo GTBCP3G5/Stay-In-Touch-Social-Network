@@ -1,6 +1,6 @@
 export default function Footer () {
     const footerContainer = {
-        backgroundColor: "bg-gray-650",
+        backgroundColor: "#423e4f",
         height: "7rem",
         display: "flex",
         justifyContent: "center",
