@@ -67,12 +67,8 @@ const resolvers = {
       );
       return post;
     },
-    updatePost: async (parent, { postId, postText }) => {
-      return await Post.findOneAndUpdate(
-        { _id: postId },
-        { postText },
-        { new: true }
-      );
+    updatePost: async (parent, { _id, postText }) => {
+      return await Post.findOneAndUpdate({ _id }, { postText }, { new: true });
     },
     removePost: async (parent, { postId }) => {
       return Post.findOneAndDelete({ _id: postId });
