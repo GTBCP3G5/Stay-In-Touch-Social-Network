@@ -29,6 +29,7 @@ const typeDefs = gql`
   type Friend {
     _id: ID!
     username: String!
+    gitHub: String
   }
 
   type Auth {
@@ -41,6 +42,8 @@ const typeDefs = gql`
     user(username: String!): User
     posts(username: String): [Post]
     post(_id: ID!): Post
+    friends: [Friend]
+    friend(username: String): Friend
   }
 
   type Mutation {
@@ -50,7 +53,7 @@ const typeDefs = gql`
     updatePost(postId: ID!, postText: String!): Post
     removePost(postId: ID!): Post
     addComment(postId: ID!, commentText: String!, commentAuthor: String!): Post
-    updateComment(postId: ID!, commentText: String!): Post
+    updateComment(postId: ID!, commentId: ID!, commentText: String!): Post
     removeComment(postId: ID!, commentId: ID!): Post
   }
 `;

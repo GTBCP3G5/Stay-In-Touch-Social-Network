@@ -91,15 +91,15 @@ const resolvers = {
         }
       );
     },
-    updateComment: async (parent, { postId, commentText }) => {
+    updateComment: async (parent, { postId, commentId, commentText }) => {
       return await Post.findOneAndUpdate(
-        { _id: postId },
-        { commentText },
+        { _id: postId, "comments._id": commentId },
+        { "comments.$.commentText": commentText },
         { new: true }
       );
     },
     removeComment: async (parent, { postId, commentId }) => {
-      return Post.findOneAndUpdate(
+      return await Post.findOneAndUpdate(
         { _id: postId },
         { $pull: { comments: { _id: commentId } } },
         { new: true }
