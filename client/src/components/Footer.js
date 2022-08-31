@@ -15,17 +15,17 @@ export default function Footer () {
     return (
         <div style={footerContainer}>
             {/* Put github profile like in href */}
-            <a href="#">
+            <a href="https://github.com/catcueto">
                 {/* Put image in src */}
-                <img style={avatar} src="#" alt="Eric's Avatar"/>
+                <img style={avatar} src="cat-avatar.png" alt="Catalina's Avatar"/>
             </a>
             {/* Put github profile like in href */}
-            <a href="#">
+            <a href="https://github.com/ericwittenstein">
                 {/* Put image in src */}
-                <img style={avatar} src="#" alt="Catalina's Avatar"/>
+                <img style={avatar} src="eric-avatar.png" alt="Eric's Avatar"/>
             </a>
             {/* Put github profile like in href */}
-            <a href="#">
+            <a href="https://github.com/hawkjosh">
                 {/* Put image in src */}
                 <img style={avatar} src="#" alt="Josh's Avatar"/>
             </a>
