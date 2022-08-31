@@ -27,7 +27,7 @@ export default function Footer () {
             {/* Put github profile like in href */}
             <a href="https://github.com/hawkjosh">
                 {/* Put image in src */}
-                <img style={avatar} src="#" alt="Josh's Avatar"/>
+                <img style={avatar} src="josh-avatar.png" alt="Josh's Avatar"/>
             </a>
             <a href="https://github.com/howardk97">
                 <img style={avatar} src="kimberly-avatar.png" alt="Kimberly's Avatar"/>
