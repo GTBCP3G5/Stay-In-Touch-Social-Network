@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Friends from "./components/Friends";
 import Favorites from "./components/Favorites";
 import NewPost from "./components/NewPost";
+import Login from "./components/Login";
 
 const client = new ApolloClient({
 	uri: '/',
@@ -17,6 +18,7 @@ function App() {
 		<ApolloProvider client={client}>
 			<Router>
 				<Navbar />
+				<Login />
 				<Routes>
 					<Route
 					path="/"
