@@ -1,4 +1,3 @@
-import "./App.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { InMemoryCache, ApolloClient, ApolloProvider } from '@apollo/client';
