@@ -15,11 +15,11 @@ const resolvers = {
     // GET all posts
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return await Post.find(params).populate("comments");
+      return Post.find(params).populate("comments");
     },
     // Get single post by ID
     post: async (parent, { postId }) => {
-      return await Post.findOne({ _id: postId });
+      return Post.findOne({ _id: postId });
     },
   },
 
@@ -92,10 +92,10 @@ const resolvers = {
       );
     },
 
-    removeComment: async (parent, { postId, commentId }) => {
-      return Post.findOneAndUpdate(
+    removeComment: async (parent, { postId, commentText, commentAuthor }) => {
+      return Post.findOneAndDelete(
         { _id: postId },
-        { $pull: { comments: { _id: commentId } } },
+        { $pull: { comments: { commentText, commentAuthor } } },
         { new: true }
       );
     },
