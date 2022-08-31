@@ -19,7 +19,7 @@ export default function Navbar () {
 
     // Styling
     const navbar = {
-        backgroundColor: "bg-gray-650",
+        backgroundColor: "#423e4f",
         // height: "100%"
     }
 
@@ -34,7 +34,7 @@ export default function Navbar () {
     }
 
     const navButton = {
-        backgroundColor: "bg-gray-650"
+        backgroundColor: "#423e4f"
     }
 
     // For smaller screens

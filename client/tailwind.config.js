@@ -1,13 +1,7 @@
 module.exports = {
 	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 	theme: {
-		extend: {
-			colors: {
-				gray: {
-					650: "#423e4f",
-				},
-			},
-		},
+		extend: {},
 	},
 	plugins: [require("@tailwindcss/forms")],
 };
