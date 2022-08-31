@@ -1,15 +1,12 @@
 # Stay In Touch Social Network
-![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
-___
+![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Description
 
 This project is a way for graduates of our coding bootcamp cohort to stay in touch after graduation! Users will be able to make posts, add friends, keep a list of favorite posts, and more!
 
 **The deployed app can be found [HERE](linkhere)**
-
----
 
 ## Table of Contents 
 
@@ -25,9 +22,6 @@ This project is a way for graduates of our coding bootcamp cohort to stay in tou
 
 * [Questions](#questions)
 
----
-
-
 ## Installation
 
 To install necessary dependencies, run the following command in the console/command line at the root level of the project:
@@ -35,9 +29,6 @@ To install necessary dependencies, run the following command in the console/comm
 ```
 npm i
 ```
-
----
-
 
 ## Usage
 
@@ -48,29 +39,17 @@ npm run develop
 ```
 *Note: Other command line scripts can be found in the `package.json` files within the root, client, and server directories of the project*
 
----
-
-
 ## License
 
 This project is licensed under the MIT license. Learn more [HERE](LICENSE)
-
----
-
 
 ## GitHub Repo
 
 [Stay In Touch Social Network GitHub Repo](https://github.com/GTBCP3G5/Stay-In-Touch-Social-Network)
 
----
-
-
 ## Project Demo
 
     **_ THIS IS A PLACEHOLDER FOR AN IMAGE OR SCREEN RECORDING OF THE PROJECT _**
-
----
-
 
 ## Testing
 
@@ -79,9 +58,6 @@ To initiate the unit tests for this app, run the following command in the consol
 ```
 npm test
 ```
-
----
-
 
 ## Project Development Team
 
@@ -92,9 +68,6 @@ npm test
 [Kimberly Howard](https://github.com/Howardk97/)
 
 [Eric Wittenstein](https://github.com/ericwittenstein)
-
----
-
 
 ## Questions and Contact Info
 
@@ -109,8 +82,5 @@ Thank you for checking out our work!
     |
 ---------
  -->
-
----
-
 
 ### -Cat, Josh, Kimberly, and Eric
