@@ -55,6 +55,8 @@ const typeDefs = gql`
     addComment(postId: ID!, commentText: String!, commentAuthor: String!): Post
     updateComment(postId: ID!, commentId: ID!, commentText: String!): Post
     removeComment(postId: ID!, commentId: ID!): Post
+    addFriend(userId: ID!, username: String!): User
+    removeFriend(userId: ID!, username: String!): User
   }
 `;
 

@@ -101,6 +101,23 @@ const resolvers = {
         { new: true }
       );
     },
+
+    // userId is the USER itself
+    // username belongs to the friend we want to add to our Friend List
+    addFriend: async (parent, { userId, username }) => {
+      return await User.findOneAndUpdate(
+        { _id: userId },
+        { $push: { friends: username } },
+        { new: true }
+      );
+    },
+    removeFriend: async (parent, { userId, username }) => {
+      return await User.findOneAndDelete(
+        { _id: userId },
+        { $pull: { friends: { _id: username } } },
+        { new: true }
+      );
+    },
   },
 };
 
