@@ -18,8 +18,8 @@ const resolvers = {
       return Post.find(params).populate("comments");
     },
     // Get single post by ID
-    post: async (parent, { postId }) => {
-      return Post.findOne({ _id: postId });
+    post: async (parent, { _id }) => {
+      return await Post.findById({ _id });
     },
   },
 
@@ -67,9 +67,9 @@ const resolvers = {
       );
       return post;
     },
-    updatePost: async (parent, { id, postText }) => {
+    updatePost: async (parent, { postId, postText }) => {
       return await Post.findOneAndUpdate(
-        { _id: id },
+        { _id: postId },
         { postText },
         { new: true }
       );
@@ -91,11 +91,17 @@ const resolvers = {
         }
       );
     },
-
-    removeComment: async (parent, { postId, commentText, commentAuthor }) => {
-      return Post.findOneAndDelete(
+    updateComment: async (parent, { postId, commentText }) => {
+      return await Post.findOneAndUpdate(
         { _id: postId },
-        { $pull: { comments: { commentText, commentAuthor } } },
+        { commentText },
+        { new: true }
+      );
+    },
+    removeComment: async (parent, { postId, commentId }) => {
+      return Post.findOneAndUpdate(
+        { _id: postId },
+        { $pull: { comments: { _id: commentId } } },
         { new: true }
       );
     },
