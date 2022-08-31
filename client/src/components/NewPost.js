@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
-import { ADD_POST } from "../../utils/mutations";
-import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
+import { ADD_POST } from "../utils/mutations";
+import { QUERY_POSTS, QUERY_ME } from "../utils/queries";
 
-import Auth from "../../utils/auth";
+import Auth from "../utils/auth";
 
 export default function NewPost() {
 	const [postText, setPostText] = useState("");
