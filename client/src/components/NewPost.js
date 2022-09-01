@@ -60,6 +60,7 @@ export default function NewPost() {
 	return (
 		<div className="container mx-auto bg-slate-800 rounded-xl shadow border p-8 m-10">
 			<h1 className="text-2xl font-bold text-white">New Post</h1>
+
 			{Auth.loggedIn() ? (
 				<form className="mt-8 max-w-full" onSubmit={handleFormSubmit}>
 					<div className="grid grid-cols-1 gap-6">
@@ -75,7 +76,7 @@ export default function NewPost() {
 					</div>
 					<div className="grid grid-cols-1 gap-6">
 						<button
-							className="bg-slate-500 hover:bg-sky-500 active:bg-lime-500"
+							className="bg-slate-500 hover:bg-sky-500 active:bg-lime-500 rounded-md text-white w-6/12 justify-self-center focus:bg-slate-500"
 							type="submit"
 						>
 							Add Post
