@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import { ADD_POST } from "../utils/mutations";
-import { QUERY_POSTS, QUERY_ME } from "../utils/queries";
+import { QUERY_POSTS } from "../utils/queries";
 
 import Auth from "../utils/auth";
 
@@ -52,27 +52,32 @@ const NewPost = () => {
 
 	// Styling
 	const normalKanit = {
-        fontFamily: "'Kanit', sans-serif",
-        fontWeight: "200"
-    }
+		fontFamily: "'Kanit', sans-serif",
+		fontWeight: "200",
+	};
 
 	const boldKanit = {
-        fontFamily: "'Kanit', sans-serif",
-        fontWeight: "400",
-        fontSize: "20px"
-    }
-
-
+		fontFamily: "'Kanit', sans-serif",
+		fontWeight: "400",
+		fontSize: "20px",
+	};
 
 	return (
 		<div className="min-h-screen flex">
 			<div className="bg-zinc-700 flex-grow">
 				<div className="container mx-auto bg-zinc-800 rounded-xl shadow border p-8 sm-m-10 m-10 w-75">
-					<h1 style={boldKanit} className="text-2xl font-bold text-green-400">New Post</h1>
+					<h1
+						style={boldKanit}
+						className="text-2xl font-bold text-green-400"
+					>
+						New Post
+					</h1>
 
 					{Auth.loggedIn() ? (
-						
-						<form className="mt-8 max-w-75" onSubmit={handleFormSubmit}>
+						<form
+							className="mt-8 max-w-75"
+							onSubmit={handleFormSubmit}
+						>
 							<div className="grid grid-cols-1 gap-6 h-auto">
 								<textarea
 									name="postText"
@@ -102,12 +107,13 @@ const NewPost = () => {
 						</form>
 					) : (
 						<p>
-							You need to log in! Please <Link to="/login">login</Link> or{" "}
+							You need to log in! Please{" "}
+							<Link to="/login">login</Link> or{" "}
 							<Link to="signup">signup.</Link>
 						</p>
 					)}
+				</div>
 			</div>
-		</div>
 		</div>
 	);
 };
