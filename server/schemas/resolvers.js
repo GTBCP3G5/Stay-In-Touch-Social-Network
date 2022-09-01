@@ -7,10 +7,18 @@ const resolvers = {
   // GET routes for users
   Query: {
     users: async () => {
-      return User.find().populate("posts");
+      return User.find({}).populate("posts");
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("posts");
+    user: async (parent, args) => {
+      return User.findById(args.id).populate("posts");
+    },
+    // We add context to our query so that we can retrieve the logged in user w/o specifically searching for them
+
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
     // GET all posts
     posts: async (parent, { username }) => {
@@ -21,8 +29,9 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return await Post.findById({ _id });
     },
+    //need to decide whether this route is needed or not
     friends: async () => {
-      return User.find();
+      return User.find({});
     },
   },
 
@@ -114,18 +123,21 @@ const resolvers = {
         { new: true }
       );
     },
-    removeFriend: async (parent, { userId, username }, context) => {
-      return User.findOneAndDelete(
-        { _id: userId },
-        {
-          $pull: {
-            friends: {
-              _id: username,
+    removeFriend: async (parent, { userId, friendId }, context) => {
+      if (context.user) {
+        return User.findOneAndDelete(
+          { _id: userId },
+          {
+            $pull: {
+              friends: {
+                _id: friendId,
+              },
             },
           },
-        },
-        { new: true }
-      );
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
 };

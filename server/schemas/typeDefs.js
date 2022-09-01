@@ -39,10 +39,11 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    user(username: String!): User
+    user(id: ID!): User
     posts(username: String): [Post]
     post(_id: ID!): Post
     friends: [Friend]
+    me: User
   }
 
   type Mutation {
@@ -55,7 +56,7 @@ const typeDefs = gql`
     updateComment(postId: ID!, commentId: ID!, commentText: String!): Post
     removeComment(postId: ID!, commentId: ID!): Post
     addFriend(userId: ID!, friendId: ID!): User
-    removeFriend(userId: ID!, username: ID!): User
+    removeFriend(userId: ID!, friendId: ID!): User
   }
 `;
 
