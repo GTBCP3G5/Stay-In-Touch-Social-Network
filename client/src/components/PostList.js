@@ -1,4 +1,7 @@
+import React from 'react';
+
 export default function PostList({ posts, title }) {
+    console.log(posts)
     if(!posts.length) {
         return <h2>No Posts Yet</h2>
     }
