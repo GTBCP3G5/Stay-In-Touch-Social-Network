@@ -1,12 +1,15 @@
+import React from 'react';
+import { useQuery } from "@apollo/client";
+
 import PostList from "../components/PostList";
 
 import { QUERY_POSTS } from "../utils/queries";
 
-import { useQuery } from "@apollo/client";
-
 export default function Home() {
 	const { loading, data } = useQuery(QUERY_POSTS);
-	const posts = data;
+    console.log(data);
+	const posts = data?.posts || [];
+    // console.log(this.posts)
 	return (
 		// <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
 		<div>
@@ -29,10 +32,16 @@ export default function Home() {
 					</button>
 				</span>
 			</div>
-			{/* <PostList 
-            posts={posts}
-            title="Some Feed for Thought(s)..."
-            /> */}
+            <div className="flex justify-center">
+                {loading ? (
+                    <div>Loading...</div>
+                ) : (
+                <PostList 
+                    posts={posts}
+                    title="Checkout the post feed!"
+                />
+                )}
+            </div>
 		</div>
 	);
 }
