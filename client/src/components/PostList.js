@@ -18,7 +18,7 @@ export default function PostList({ posts, title }) {
 
     return (
         <div className='w-75'>
-            <h2 style={boldKanit} className="text-sky-500">{title}</h2>
+            <h2 style={boldKanit} className="text-green-400">{title}</h2>
             {posts &&
             posts.map((post) => (
                 <div key={post._id} className="card mb-3 bg-zinc-200">
