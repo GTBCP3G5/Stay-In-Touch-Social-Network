@@ -18,14 +18,9 @@ export default function Navbar () {
     let currentNav;
 
     // Styling
-    const navbar = {
-        backgroundColor: "#423e4f",
-        // height: "100%"
-    }
 
     const navLinks = {
         marginLeft: "2rem",
-        // margin: "1rem"
     }
 
     const navContainer = {
@@ -33,22 +28,18 @@ export default function Navbar () {
         alignItems: "center"
     }
 
-    const navButton = {
-        backgroundColor: "#423e4f"
-    }
-
     // For smaller screens
     if(width < 1000) {
         currentNav = (
         <div>
-            <div style={navbar} className="" id="navbarToggleExternalContent">
-                <div className="bg-dark p-4">
+            <div className="bg-slate-800" id="navbarToggleExternalContent">
+                <div className="bg-slate-800 p-4">
                     {/* <h5 className="text-white h4">Collapsed content</h5>
                     <span className="text-muted">Toggleable via the navbar brand.</span> */}
-                    <nav style={navbar} className="navbar fixed-top">
+                    <nav className="navbar bg-slate-800 fixed-top">
                     <div className="container-fluid">
                         {/* <a className="navbar-brand" href="#">Offcanvas navbar</a> */}
-                        <button style={navButton} className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <button className="navbar-toggler bg-slate-800" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                             <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="offcanvas offcanvas-start" id="offcanvasNavbar">
@@ -83,7 +74,7 @@ export default function Navbar () {
     // For bigger screens
     else {
         currentNav = (
-            <nav style={navbar} className="nav">
+            <nav className="nav bg-slate-800">
             <ul style={navContainer} className="left hide-on-med-and-down">
                 <li style={navLinks}>
                     <a href="/home">
