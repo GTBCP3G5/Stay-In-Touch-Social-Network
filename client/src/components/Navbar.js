@@ -51,20 +51,19 @@ export default function Navbar () {
                         <div className="offcanvas-body bg-zinc-200">
                             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3 text-zinc-800">
                             <li className="nav-item">
-                                <a className="nav-link active" href="/home">
-                                    <i className="nav-link active material-icons">home</i>
-                                </a>
+                                {Auth.loggedIn() ? (<a className="nav-link active" href="/home"><i className="nav-link active material-icons">home</i></a>) : (<div></div>)}
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link active" href="/create_post">New Post</a>
+                                {Auth.loggedIn() ? (<a className="nav-link active" href="/create_post">New Post</a>) : (<div></div>)}
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link active" href="/friends">Friends</a>
+                                {Auth.loggedIn() ? (<a className="nav-link active" href="/friends">Friends</a>) : (<div></div>)}
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link active" href="/favorites">Favorites</a>
+                                {Auth.loggedIn() ? (<a className="nav-link active" href="/favorites">Favorites</a>) : (<div></div>)}
                             </li>
                             <li className="nav-item">
+                                {Auth.loggedIn() ? (<Logout />) : (<div></div>)}
                                 <a className="nav-link active" href="/posts">Your Posts</a>)
                             </li>
                             <li className="nav-item">
@@ -88,19 +87,22 @@ export default function Navbar () {
             <nav className="nav bg-zinc-800 sticky top-0">
             <ul style={navContainer} className="left hide-on-med-and-down text-green-400">
                 <li style={navLinks}>
-                    <a href="/home">
-                    <i className="material-icons text-green-400">home</i>
-                    </a>
+                    {Auth.loggedIn() ? (<a href="/home"><i className="material-icons text-green-400">home</i></a>) : (<div></div>)}
                 </li>
                 <li style={navLinks}>
-                    <a className="text-green-400" href="/create_post">New Post</a>
+                    {Auth.loggedIn() ? (<a className="text-green-400" href="/create_post">New Post</a>) : (<div></div>)}
+                    
                 </li>
                 <li style={navLinks}>
-                    <a className="text-green-400" href="/friends">Friends</a>
+                    {Auth.loggedIn() ? (<a className="text-green-400" href="/friends">Friends</a>) : (<div></div>)}
+                    
                 </li>
                 <li style={navLinks}>
-                    <a className="text-green-400" href="/favorites">Favorites</a>
+                    {Auth.loggedIn() ? (<a className="text-green-400" href="/favorites">Favorites</a>) : (<div></div>)}
+                    
                 </li>
+                <li style={navLinks} className="text-green-400">
+                    {Auth.loggedIn() ? (<Logout />) : (<div></div>)}
                 <li style={navLinks}>
                     <a className='text-green-400' href="/posts">Your Posts</a>
                 </li>
