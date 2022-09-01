@@ -88,7 +88,7 @@ const NewPost = () => {
 							<div className="grid grid-cols-1 gap-6">
 								<button
 									style={normalKanit}
-									className="bg-sky-500 hover:bg-sky-400 active:bg-green-500 rounded-md text-white w-6/12 justify-self-center focus:bg-green-500 m-4 sm-w-40 lg-w-5 h-10"
+									className="bg-sky-500 hover:bg-sky-400 active:bg-green-500 rounded-md text-white justify-self-center focus:bg-green-500 m-4 w-24 sm-w-40 h-10"
 									type="submit"
 								>
 									Add Post
