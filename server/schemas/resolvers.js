@@ -29,17 +29,18 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return await Post.findById({ _id });
     },
-    //need to decide whether this route is needed or not
+    //pass in user id as a parameter
     friends: async () => {
-      return User.find({});
+      return User.findById({});
+      // find user based on id and populate friends
     },
   },
 
   Mutation: {
     // SIGN UP ROUTE
-    addUser: async (parent, { username, email, password, gitHub }) => {
+    addUser: async (parent, { username, email, password, github }) => {
       // Creating the user
-      const user = await User.create({ username, email, password, gitHub });
+      const user = await User.create({ username, email, password, github });
       // To reduce friction for the user, we immediately sign a JSON Web Token and log the user in after they are created
       const token = signToken(user);
       // Return an `Auth` object that consists of the signed token and user's information

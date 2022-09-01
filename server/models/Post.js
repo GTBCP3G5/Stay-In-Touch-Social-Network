@@ -38,7 +38,6 @@ const postSchema = new Schema({
       },
     },
   ],
-  favorites: [{ type: Schema.Types.ObjectId, ref: "Post" }],
 });
 
 const Post = model("Post", postSchema);
