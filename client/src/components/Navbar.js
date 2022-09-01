@@ -103,6 +103,7 @@ export default function Navbar () {
                 </li>
                 <li style={navLinks} className="text-green-400">
                     {Auth.loggedIn() ? (<Logout />) : (<div></div>)}
+                </li>
                 <li style={navLinks}>
                     <a className='text-green-400' href="/posts">Your Posts</a>
                 </li>
