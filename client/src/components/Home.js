@@ -8,7 +8,7 @@ import { QUERY_POSTS } from "../utils/queries";
 export default function Home() {
     const normalKanit = {
         fontFamily: "'Kanit', sans-serif",
-        fontWeight: "200"
+        fontWeight: "300"
     }
 
     const { loading, data } = useQuery(QUERY_POSTS);
@@ -44,7 +44,7 @@ export default function Home() {
                 ) : (
                 <PostList 
                     posts={posts}
-                    title="Checkout the post feed!"
+                    title="Check out the post feed!"
                 />
                 )}
             </div>

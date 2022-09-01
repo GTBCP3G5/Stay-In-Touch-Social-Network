@@ -9,7 +9,6 @@ export default function PostList({ posts, title }) {
 
     const normalKanit = {
         fontFamily: "'Kanit', sans-serif",
-        fontWeight: "200"
     }
 
     console.log(posts.length)

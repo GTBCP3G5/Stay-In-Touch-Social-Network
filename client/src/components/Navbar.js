@@ -65,6 +65,9 @@ export default function Navbar () {
                                 <a className="nav-link active" href="/favorites">Favorites</a>
                             </li>
                             <li className="nav-item">
+                                <a className="nav-link active" href="/posts">Your Posts</a>)
+                            </li>
+                            <li className="nav-item">
                                 {Auth.loggedIn() ? (<Logout />) : (<Link to="/login">Login</Link>)}
                             </li>
                             </ul>
@@ -97,6 +100,9 @@ export default function Navbar () {
                 </li>
                 <li style={navLinks}>
                     <a className="text-green-400" href="/favorites">Favorites</a>
+                </li>
+                <li style={navLinks}>
+                    <a className='text-green-400' href="/posts">Your Posts</a>
                 </li>
                 <li style={navLinks}>
                     {Auth.loggedIn() ? (<Logout />) : (<Link to="/login">Login</Link>)}

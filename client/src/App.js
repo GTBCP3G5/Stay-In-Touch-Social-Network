@@ -11,6 +11,7 @@ import Home from "./components/Home";
 import Friends from "./components/Friends";
 import Favorites from "./components/Favorites";
 import NewPost from "./components/NewPost";
+import YourPosts from "./components/YourPosts"
 
 const httpLink = createHttpLink({
 	uri: '/graphql',
@@ -65,6 +66,14 @@ function App() {
 						<Route
 							path="/favorites"
 							element={<Favorites />}
+						/>
+						<Route
+							path="/posts"
+							element={<YourPosts />}
+						/>
+						<Route
+							path="/me"
+							element={<YourPosts />}
 						/>
 					</Routes>
 					<Footer />
