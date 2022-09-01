@@ -18,7 +18,7 @@ const userSchema = new Schema({
     validate: [isEmail, "Please enter a valid email address"],
   },
   // github username
-  gitHub: {
+  github: {
     type: String,
     trim: true,
   },
@@ -35,13 +35,11 @@ const userSchema = new Schema({
     },
   ],
   // user's list of friends, referencing User.js
-  friends: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-  ],
+  friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  favorites: [{ type: Schema.Types.ObjectId, ref: "Post" }],
 });
+
+// [this]
 
 // set up pre-save middleware to create password
 userSchema.pre("save", async function (next) {
