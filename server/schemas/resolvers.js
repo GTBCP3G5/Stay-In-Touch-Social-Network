@@ -31,7 +31,7 @@ const resolvers = {
 
     // find user based on id and populate friends
     friends: async (parent, { _id }) => {
-      return await User.findById({ _id });
+      return await User.findOne({ _id }).populate("friends");
     },
   },
 
