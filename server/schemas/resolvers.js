@@ -1,5 +1,6 @@
 // Authentication Purposes
 const { AuthenticationError } = require("apollo-server-express");
+const { isObjectIdOrHexString } = require("mongoose");
 const { User, Post } = require("../models");
 const { signToken } = require("../utils/auth");
 
@@ -15,7 +16,7 @@ const resolvers = {
     // We add context to our query so that we can retrieve the logged in user w/o specifically searching for them
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('posts');
+        return User.findOne({ _id: context.user._id }).populate("posts");
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -72,13 +73,16 @@ const resolvers = {
     // ROUTES FOR POSTS
     addPost: async (parent, { postText }, context) => {
       if (context.user) {
-        const post = await Post.create({ postText, postAuthor: context.user.username, });
+        const post = await Post.create({
+          postText,
+          postAuthor: context.user.username,
+        });
 
-      await User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $addToSet: { posts: post._id } }
-      );
-      return post;
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { posts: post._id } }
+        );
+        return post;
       }
     },
     updatePost: async (parent, { _id, postText }) => {
@@ -126,16 +130,10 @@ const resolvers = {
       );
     },
     removeFriend: async (parent, { userId, friendId }) => {
+      const friend = await User.findOne({ _id: friendId });
       return await User.findOneAndUpdate(
         { _id: userId },
-        {
-          $pull: {
-            friends: {
-              _id: friendId,
-            },
-          },
-        },
-        { new: true }
+        { $pull: { friends: friend._id } }
       );
     },
   },

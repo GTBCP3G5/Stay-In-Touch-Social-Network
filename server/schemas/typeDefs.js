@@ -63,6 +63,7 @@ const typeDefs = gql`
     removeComment(postId: ID!, commentId: ID!): Post
     addFriend(userId: ID!, friendId: ID!): User
     removeFriend(userId: ID!, friendId: ID!): User
+    addFavorite(userId: ID!, postId: ID!): Post
   }
 `;
 
