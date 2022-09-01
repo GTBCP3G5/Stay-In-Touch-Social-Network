@@ -6,11 +6,11 @@ import Auth from '../utils/auth';
 
 export default function Login() {
   const [formData, setFormData] = useState({ 
-    username: '',
-    email: ''
+    email: '',
+    password: ''
   });
 
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +34,7 @@ export default function Login() {
     }
 
     setFormData({
-      username: '',
+      email: '',
       password: ''
     });
   };
@@ -56,8 +56,8 @@ export default function Login() {
           : (
 
           <form onSubmit={handleSubmit}>
-            <label className="text-left">Username:</label>
-            <input name="username" type="text" value={formData.username} onChange={handleChange} placeholder="Username" className={"w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"} />
+            <label className="text-left">Email:</label>
+            <input name="email" type="text" value={formData.email} onChange={handleChange} placeholder="Email" className={"w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"} />
 
             <label>Password:</label>
             <input name="password" type="password" value={formData.password} onChange={handleChange} placeholder="Password" className={"w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"} />
