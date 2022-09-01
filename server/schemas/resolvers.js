@@ -10,8 +10,8 @@ const resolvers = {
     users: async () => {
       return User.find({}).populate("posts");
     },
-    user: async (parent, args) => {
-      return User.findById(args.id).populate("posts");
+    user: async (parent, _id) => {
+      return User.findById(_id).populate("posts");
     },
     // We add context to our query so that we can retrieve the logged in user w/o specifically searching for them
     me: async (parent, args, context) => {
@@ -33,6 +33,9 @@ const resolvers = {
     // find user based on id and populate friends
     friends: async (parent, { _id }) => {
       return await User.findOne({ _id }).populate("friends");
+    },
+    favorites: async (parent, { _id }) => {
+      return await User.find({ _id }).populate("favorites");
     },
   },
 
@@ -119,7 +122,7 @@ const resolvers = {
         { new: true }
       );
     },
-
+    // ROUTES FOR FRIENDS
     // userId is the USER itself
     // username belongs to the friend we want to add to our Friend List
     addFriend: async (parent, { userId, friendId }) => {
@@ -134,6 +137,22 @@ const resolvers = {
       return await User.findOneAndUpdate(
         { _id: userId },
         { $pull: { friends: friend._id } }
+      );
+    },
+    // ROUTES FOR FAVORITES/SAVED POSTS
+    addFavorite: async (parent, { postId }, context) => {
+      const post = await Post.findOne({ _id: postId });
+      return await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $push: { favorites: post._id } }
+      );
+    },
+
+    removeFavorite: async (parent, { userId, postId }) => {
+      const favorite = await Post.findOne({ _id: postId });
+      return await Post.findOneAndUpdate(
+        { _id: userId },
+        { $pull: { favorites: favorite._id } }
       );
     },
   },
