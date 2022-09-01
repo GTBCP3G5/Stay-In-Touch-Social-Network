@@ -75,7 +75,7 @@ export default function NewPost() {
 					</div>
 					<div className="grid grid-cols-1 gap-6">
 						<button
-							className="btn bg-slate-800 btn-block py-3"
+							className="bg-slate-500 hover:bg-sky-500 active:bg-lime-500"
 							type="submit"
 						>
 							Add Post
