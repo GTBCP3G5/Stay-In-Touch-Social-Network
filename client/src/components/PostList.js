@@ -1,10 +1,13 @@
+import React from 'react';
+
 export default function PostList({ posts, title }) {
+    console.log(posts.length)
     if(!posts.length) {
         return <h2>No Posts Yet</h2>
     }
 
     return (
-        <div>
+        <div className='w-50'>
             <h2>{title}</h2>
             {posts &&
             posts.map((post) => (
