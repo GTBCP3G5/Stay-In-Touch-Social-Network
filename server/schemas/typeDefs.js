@@ -6,7 +6,7 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
-    gitHub: String
+    github: String
     password: String!
     posts: [Post]
     friends: [Friend]
@@ -29,7 +29,7 @@ const typeDefs = gql`
   type Friend {
     _id: ID!
     username: String!
-    gitHub: String
+    github: String
   }
 
   type Auth {
@@ -47,7 +47,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!, github: String): Auth
     login(email: String!, password: String!): Auth
     addPost(postText: String!, postAuthor: String!): Post
     updatePost(_id: ID!, postText: String!): Post
