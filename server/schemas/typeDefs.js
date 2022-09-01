@@ -44,6 +44,7 @@ const typeDefs = gql`
     post(_id: ID!): Post
     friends: [Friend]
     me: User
+    favorites(userId: ID!): User
   }
 
   type Mutation {
