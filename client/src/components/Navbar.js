@@ -1,5 +1,8 @@
 // Package for react and hooks
 import React, { useState, useEffect } from 'react';
+import Logout from '../components/Logout';
+import { Link } from 'react-router-dom';
+import Auth from '../utils/auth';
 
 export default function Navbar () {
     // Set width of window to current window size
@@ -59,6 +62,9 @@ export default function Navbar () {
                             <li className="nav-item">
                                 <a className="nav-link active" href="/favorites">Favorites</a>
                             </li>
+                            <li className="nav-item">
+                                {Auth.loggedIn() ? (<Logout />) : (<Link to="/login">Login</Link>)}
+                            </li>
                             </ul>
                         </div>
                         </div>
@@ -89,6 +95,9 @@ export default function Navbar () {
                 </li>
                 <li style={navLinks}>
                     <a href="/favorites">Favorites</a>
+                </li>
+                <li style={navLinks}>
+                    {Auth.loggedIn() ? (<Logout />) : (<Link to="/login">Login</Link>)}
                 </li>
             </ul>
         </nav>
