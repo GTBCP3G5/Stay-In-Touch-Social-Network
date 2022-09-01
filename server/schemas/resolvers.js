@@ -7,10 +7,18 @@ const resolvers = {
   // GET routes for users
   Query: {
     users: async () => {
-      return User.find().populate("posts");
+      return User.find({}).populate("posts");
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("posts");
+    user: async (parent, args) => {
+      return User.findById(args.id).populate("posts");
+    },
+    // We add context to our query so that we can retrieve the logged in user w/o specifically searching for them
+
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate('posts');
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
     // GET all posts
     posts: async (parent, { username }) => {
@@ -21,13 +29,18 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return await Post.findById({ _id });
     },
+    //pass in user id as a parameter
+    friends: async () => {
+      return User.findById({});
+      // find user based on id and populate friends
+    },
   },
 
   Mutation: {
     // SIGN UP ROUTE
-    addUser: async (parent, { username, email, password, gitHub }) => {
+    addUser: async (parent, { username, email, password, github }) => {
       // Creating the user
-      const user = await User.create({ username, email, password, gitHub });
+      const user = await User.create({ username, email, password, github });
       // To reduce friction for the user, we immediately sign a JSON Web Token and log the user in after they are created
       const token = signToken(user);
       // Return an `Auth` object that consists of the signed token and user's information
@@ -45,7 +58,7 @@ const resolvers = {
       // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was provided
       const correctPw = await user.isCorrectPassword(password);
 
-      // If the password is incorrect, return an Authentication error stating so
+      // If the password is incorrect
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials");
       }
@@ -58,14 +71,16 @@ const resolvers = {
     },
 
     // ROUTES FOR POSTS
-    addPost: async (parent, { postText, postAuthor }) => {
-      const post = await Post.create({ postText, postAuthor });
+    addPost: async (parent, { postText }, context) => {
+      if (context.user) {
+        const post = await Post.create({ postText, postAuthor: context.user.username, });
 
-      await Post.findOneAndUpdate(
-        { username: postAuthor },
+      await User.findOneAndUpdate(
+        { _id: context.user._id },
         { $addToSet: { posts: post._id } }
       );
       return post;
+      }
     },
     updatePost: async (parent, { _id, postText }) => {
       return await Post.findOneAndUpdate({ _id }, { postText }, { new: true });
@@ -100,6 +115,32 @@ const resolvers = {
         { $pull: { comments: { _id: commentId } } },
         { new: true }
       );
+    },
+
+    // userId is the USER itself
+    // username belongs to the friend we want to add to our Friend List
+    addFriend: async (parent, { userId, friendId }) => {
+      return await User.findOneAndUpdate(
+        { _id: userId },
+        { $push: { friends: friendId } },
+        { new: true }
+      );
+    },
+    removeFriend: async (parent, { userId, friendId }, context) => {
+      if (context.user) {
+        return User.findOneAndDelete(
+          { _id: userId },
+          {
+            $pull: {
+              friends: {
+                _id: friendId,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
 };

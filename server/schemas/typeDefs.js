@@ -43,18 +43,26 @@ const typeDefs = gql`
     posts(username: String): [Post]
     post(_id: ID!): Post
     friends: [Friend]
-    friend(username: String): Friend
+    me: User
+    favorites(userId: ID!): [Post]
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!, github: String): Auth
+    addUser(
+      username: String!
+      email: String!
+      password: String!
+      github: String
+    ): Auth
     login(email: String!, password: String!): Auth
-    addPost(postText: String!, postAuthor: String!): Post
+    addPost(postText: String!): Post
     updatePost(_id: ID!, postText: String!): Post
     removePost(postId: ID!): Post
     addComment(postId: ID!, commentText: String!, commentAuthor: String!): Post
     updateComment(postId: ID!, commentId: ID!, commentText: String!): Post
     removeComment(postId: ID!, commentId: ID!): Post
+    addFriend(userId: ID!, friendId: ID!): User
+    removeFriend(userId: ID!, friendId: ID!): User
   }
 `;
 
