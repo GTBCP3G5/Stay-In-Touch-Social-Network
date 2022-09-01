@@ -49,21 +49,19 @@ export default function Navbar () {
                         <div className="offcanvas-body">
                             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li className="nav-item">
-                                <a className="nav-link active" href="/home">
-                                    <i className="nav-link active material-icons">home</i>
-                                </a>
+                                {Auth.loggedIn() ? (<a className="nav-link active" href="/home"><i className="nav-link active material-icons">home</i></a>) : (<Link to="/login" className="text-black">Login</Link>)}
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link active" href="/create_post">New Post</a>
+                                {Auth.loggedIn() ? (<a className="nav-link active" href="/create_post">New Post</a>) : (<a className="hidden" href="/create_post">New Post</a>)}
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link active" href="/friends">Friends</a>
+                                {Auth.loggedIn() ? (<a className="nav-link active" href="/friends">Friends</a>) : (<a className="hidden" href="/friends">Friends</a>)}
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link active" href="/favorites">Favorites</a>
+                                {Auth.loggedIn() ? (<a className="nav-link active" href="/favorites">Favorites</a>) : (<a className="hidden" href="/favorites">Favorites</a>)}
                             </li>
-                            <li className="nav-item">
-                                {Auth.loggedIn() ? (<Logout />) : (<Link to="/login">Login</Link>)}
+                            <li className="nav-item text-black">
+                                {Auth.loggedIn() ? (<Logout />) : (<div></div>)}
                             </li>
                             </ul>
                         </div>
@@ -83,21 +81,19 @@ export default function Navbar () {
             <nav className="nav bg-slate-800">
             <ul style={navContainer} className="left hide-on-med-and-down">
                 <li style={navLinks}>
-                    <a href="/home">
-                    <i className="material-icons">home</i>
-                    </a>
+                    {Auth.loggedIn() ? (<a href="/home"><i className="material-icons">home</i></a>) : (<Link to="/login">Login</Link>)}
                 </li>
                 <li style={navLinks}>
-                    <a href="/create_post">New Post</a>
+                    {Auth.loggedIn() ? (<a href="/create_post">New Post</a>) : (<a className="hidden" href="/create_post">New Post</a>)}
                 </li>
                 <li style={navLinks}>
-                    <a href="/friends">Friends</a>
+                    {Auth.loggedIn() ? (<a href="/friends">Friends</a>) : (<a className="hidden" href="/friends">Friends</a>)}
                 </li>
                 <li style={navLinks}>
-                    <a href="/favorites">Favorites</a>
+                    {Auth.loggedIn() ? (<a href="/favorites">Favorites</a>) : (<a className="hidden" href="/favorites">Favorites</a>)}
                 </li>
                 <li style={navLinks}>
-                    {Auth.loggedIn() ? (<Logout />) : (<Link to="/login">Login</Link>)}
+                    <a href="#!">{Auth.loggedIn() ? (<Logout />) : (<div></div>)}</a>
                 </li>
             </ul>
         </nav>
