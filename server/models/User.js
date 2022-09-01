@@ -39,7 +39,6 @@ const userSchema = new Schema({
   // user's favorited posts
   favorites: [{ type: Schema.Types.ObjectId, ref: "Post" }],
 });
-// [this]
 
 // set up pre-save middleware to create password
 userSchema.pre("save", async function (next) {
