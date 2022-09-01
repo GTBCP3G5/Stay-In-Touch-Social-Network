@@ -42,9 +42,9 @@ const typeDefs = gql`
     user(username: String!): User
     posts(username: String): [Post]
     post(_id: ID!): Post
-    friends: [Friend]
     me: User
-    favorites(userId: ID!): [Post]
+    friends(_id: ID!): User
+    favorites(postId: ID!): [Post]
   }
 
   type Mutation {
@@ -63,6 +63,7 @@ const typeDefs = gql`
     removeComment(postId: ID!, commentId: ID!): Post
     addFriend(userId: ID!, friendId: ID!): User
     removeFriend(userId: ID!, friendId: ID!): User
+    addFavorite(userId: ID!, postId: ID!): Post
   }
 `;
 

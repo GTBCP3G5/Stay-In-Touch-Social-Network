@@ -3,60 +3,60 @@
     "username": "Josh",
     "email": "bkernighan@techfriends.dev",
     "password": "password01",
-    "gitHub": "joshijosh"
+    "github": "joshijosh"
   },
   {
     "username": "Joshua",
     "email": "mkanatalexander@techfriends.dev",
     "password": "password02",
-    "gitHub": "joshuax1924"
+    "github": "joshuax1924"
   },
   {
     "username": "Eric",
     "email": "wtls@techfriends.dev",
     "password": "password03",
-    "gitHub": "ericwitttt"
+    "github": "ericwitttt"
   },
   {
     "username": "Cat",
     "email": "kbeck@techfriends.dev",
     "password": "password04",
-    "gitHub": "catkitty"
+    "github": "catkitty"
   },
   {
     "username": "Kimberly",
     "email": "evberard@techfriends.dev",
     "password": "password05",
-    "gitHub": "kimberlee"
+    "github": "kimberlee"
   },
   {
     "username": "Jordan",
     "email": "akay@techfriends.dev",
     "password": "password06",
-    "gitHub": "jordansx"
+    "github": "jordansx"
   },
   {
     "username": "Keegan",
     "email": "choare@techfriends.dev",
     "password": "password07",
-    "gitHub": "keeganle"
+    "github": "keeganle"
   },
   {
     "username": "Scotty",
     "email": "dthomas@techfriends.dev",
     "password": "password08",
-    "gitHub": "scottee"
+    "github": "scottee"
   },
   {
     "username": "Fiona",
     "email": "dknuth@techfriends.dev",
     "password": "password09",
-    "gitHub": "feeona"
+    "github": "feeona"
   },
   {
     "username": "Aura",
     "email": "lernantino@techfriends.dev",
     "password": "password10",
-    "gitHub": "aurasol"
+    "github": "aurasol"
   }
 ]
