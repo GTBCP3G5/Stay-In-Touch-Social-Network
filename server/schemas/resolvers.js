@@ -21,6 +21,9 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return await Post.findById({ _id });
     },
+    friends: async () => {
+      return User.find();
+    },
   },
 
   Mutation: {
@@ -45,7 +48,7 @@ const resolvers = {
       // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was provided
       const correctPw = await user.isCorrectPassword(password);
 
-      // If the password is incorrect, return an Authentication error stating so
+      // If the password is incorrect
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials");
       }
@@ -104,17 +107,23 @@ const resolvers = {
 
     // userId is the USER itself
     // username belongs to the friend we want to add to our Friend List
-    addFriend: async (parent, { userId, username }) => {
+    addFriend: async (parent, { userId, friendId }) => {
       return await User.findOneAndUpdate(
         { _id: userId },
-        { $push: { friends: username } },
+        { $push: { friends: friendId } },
         { new: true }
       );
     },
-    removeFriend: async (parent, { userId, username }) => {
-      return await User.findOneAndDelete(
+    removeFriend: async (parent, { userId, username }, context) => {
+      return User.findOneAndDelete(
         { _id: userId },
-        { $pull: { friends: { _id: username } } },
+        {
+          $pull: {
+            friends: {
+              _id: username,
+            },
+          },
+        },
         { new: true }
       );
     },
