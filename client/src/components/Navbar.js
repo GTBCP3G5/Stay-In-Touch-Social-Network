@@ -64,6 +64,10 @@ export default function Navbar () {
                             </li>
                             <li className="nav-item">
                                 {Auth.loggedIn() ? (<Logout />) : (<div></div>)}
+                                <a className="nav-link active" href="/posts">Your Posts</a>)
+                            </li>
+                            <li className="nav-item">
+                                {Auth.loggedIn() ? (<Logout />) : (<Link to="/login">Login</Link>)}
                             </li>
                             </ul>
                         </div>
@@ -80,7 +84,7 @@ export default function Navbar () {
     // For bigger screens
     else {
         currentNav = (
-            <nav className="nav bg-zinc-800">
+            <nav className="nav bg-zinc-800 sticky top-0">
             <ul style={navContainer} className="left hide-on-med-and-down text-green-400">
                 <li style={navLinks}>
                     {Auth.loggedIn() ? (<a href="/home"><i className="material-icons text-green-400">home</i></a>) : (<div></div>)}
@@ -99,6 +103,11 @@ export default function Navbar () {
                 </li>
                 <li style={navLinks} className="text-green-400">
                     {Auth.loggedIn() ? (<Logout />) : (<div></div>)}
+                <li style={navLinks}>
+                    <a className='text-green-400' href="/posts">Your Posts</a>
+                </li>
+                <li style={navLinks}>
+                    {Auth.loggedIn() ? (<Logout />) : (<Link to="/login">Login</Link>)}
                 </li>
             </ul>
         </nav>
