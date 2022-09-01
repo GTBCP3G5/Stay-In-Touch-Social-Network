@@ -34,6 +34,9 @@ const resolvers = {
     friends: async (parent, { _id }) => {
       return await User.findOne({ _id }).populate("friends");
     },
+    favorites: async (parent, { postId }) => {
+      return await Post.findOne({ postId }).populate("favorites");
+    },
   },
 
   Mutation: {
@@ -119,7 +122,7 @@ const resolvers = {
         { new: true }
       );
     },
-
+    // ROUTES FOR FRIENDS
     // userId is the USER itself
     // username belongs to the friend we want to add to our Friend List
     addFriend: async (parent, { userId, friendId }) => {
@@ -134,6 +137,21 @@ const resolvers = {
       return await User.findOneAndUpdate(
         { _id: userId },
         { $pull: { friends: friend._id } }
+      );
+    },
+    // ROUTES FOR FAVORITES/SAVED POSTS
+    addFavorite: async (parent, { userId, friendId }) => {
+      return await Post.findOneAndUpdate(
+        { _id: userId },
+        { $push: { favorites: postId } },
+        { new: true }
+      );
+    },
+    removeFavorite: async (parent, { userId, postId }) => {
+      const favorite = await Post.findOne({ _id: postId });
+      return await Post.findOneAndUpdate(
+        { _id: userId },
+        { $pull: { favorites: favorite._id } }
       );
     },
   },
