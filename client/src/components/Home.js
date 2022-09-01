@@ -32,7 +32,7 @@ export default function Home() {
 					</button>
 				</span>
 			</div>
-            <div className="flex justify-center">
+            <div className="flex justify-center w-100">
                 {loading ? (
                     <div>Loading...</div>
                 ) : (

@@ -7,7 +7,7 @@ export default function PostList({ posts, title }) {
     }
 
     return (
-        <div>
+        <div className='w-50'>
             <h2>{title}</h2>
             {posts &&
             posts.map((post) => (
