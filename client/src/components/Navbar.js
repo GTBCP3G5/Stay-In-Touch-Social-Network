@@ -36,7 +36,7 @@ export default function Navbar () {
         currentNav = (
         <div>
             <div className="" id="navbarToggleExternalContent">
-                <div className=" p-4">
+                <div className="p-4">
                     {/* <h5 className="text-white h4">Collapsed content</h5>
                     <span className="text-muted">Toggleable via the navbar brand.</span> */}
                     <nav className="bg-zinc-800 navbar fixed-top">
