@@ -34,11 +34,11 @@ const userSchema = new Schema({
       ref: "Post",
     },
   ],
-  // user's list of friends, referencing User.js
+  // user's list of friends
   friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  // user's favorited posts
   favorites: [{ type: Schema.Types.ObjectId, ref: "Post" }],
 });
-
 // [this]
 
 // set up pre-save middleware to create password

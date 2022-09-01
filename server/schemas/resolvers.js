@@ -13,7 +13,6 @@ const resolvers = {
       return User.findById(args.id).populate("posts");
     },
     // We add context to our query so that we can retrieve the logged in user w/o specifically searching for them
-
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
@@ -29,10 +28,10 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return await Post.findById({ _id });
     },
-    //pass in user id as a parameter
-    friends: async () => {
-      return User.findById({});
-      // find user based on id and populate friends
+
+    // find user based on id and populate friends
+    friends: async (parent, { _id }) => {
+      return await User.findById({ _id });
     },
   },
 
@@ -124,21 +123,18 @@ const resolvers = {
         { new: true }
       );
     },
-    removeFriend: async (parent, { userId, friendId }, context) => {
-      if (context.user) {
-        return User.findOneAndDelete(
-          { _id: userId },
-          {
-            $pull: {
-              friends: {
-                _id: friendId,
-              },
+    removeFriend: async (parent, { userId, friendId }) => {
+      return await User.findOneAndUpdate(
+        { _id: userId },
+        {
+          $pull: {
+            friends: {
+              _id: friendId,
             },
           },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError("You need to be logged in!");
+        },
+        { new: true }
+      );
     },
   },
 };

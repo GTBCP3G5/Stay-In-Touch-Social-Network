@@ -42,9 +42,9 @@ const typeDefs = gql`
     user(id: ID!): User
     posts(username: String): [Post]
     post(_id: ID!): Post
-    friends: [Friend]
     me: User
-    favorites(userId: ID!): [Post]
+    friends(_id: ID!): User
+    favorites(postId: ID!): [Post]
   }
 
   type Mutation {
