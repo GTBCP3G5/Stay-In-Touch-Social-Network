@@ -99,16 +99,12 @@ export default function Navbar () {
                 </li>
                 <li style={navLinks}>
                     {Auth.loggedIn() ? (<a className="text-green-400" href="/favorites">Favorites</a>) : (<div></div>)}
-                    
-                </li>
-                <li style={navLinks} className="text-green-400">
-                    {Auth.loggedIn() ? (<Logout />) : (<div></div>)}
                 </li>
                 <li style={navLinks}>
                     <a className='text-green-400' href="/posts">Your Posts</a>
                 </li>
-                <li style={navLinks}>
-                    {Auth.loggedIn() ? (<Logout />) : (<Link to="/login">Login</Link>)}
+                <li style={navLinks} className="text-green-400">
+                    {Auth.loggedIn() ? (<Logout />) : (<div></div>)}
                 </li>
             </ul>
         </nav>
