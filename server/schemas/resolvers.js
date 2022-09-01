@@ -15,7 +15,7 @@ const resolvers = {
     // We add context to our query so that we can retrieve the logged in user w/o specifically searching for them
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return User.findOne({ _id: context.user._id }).populate('posts');
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -70,14 +70,16 @@ const resolvers = {
     },
 
     // ROUTES FOR POSTS
-    addPost: async (parent, { postText, postAuthor }) => {
-      const post = await Post.create({ postText, postAuthor });
+    addPost: async (parent, { postText }, context) => {
+      if (context.user) {
+        const post = await Post.create({ postText, postAuthor: context.user.username, });
 
-      await Post.findOneAndUpdate(
-        { username: postAuthor },
+      await User.findOneAndUpdate(
+        { _id: context.user._id },
         { $addToSet: { posts: post._id } }
       );
       return post;
+      }
     },
     updatePost: async (parent, { _id, postText }) => {
       return await Post.findOneAndUpdate({ _id }, { postText }, { new: true });

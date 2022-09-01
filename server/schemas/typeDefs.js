@@ -39,7 +39,7 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    user(id: ID!): User
+    user(username: String!): User
     posts(username: String): [Post]
     post(_id: ID!): Post
     me: User
@@ -55,7 +55,7 @@ const typeDefs = gql`
       github: String
     ): Auth
     login(email: String!, password: String!): Auth
-    addPost(postText: String!, postAuthor: String!): Post
+    addPost(postText: String!): Post
     updatePost(_id: ID!, postText: String!): Post
     removePost(postId: ID!): Post
     addComment(postId: ID!, commentText: String!, commentAuthor: String!): Post
