@@ -64,7 +64,7 @@ export default function Navbar () {
                             </li>
                             <li className="nav-item">
                                 {Auth.loggedIn() ? (<Logout />) : (<div></div>)}
-                                <a className="nav-link active" href="/posts">Your Posts</a>)
+                                <a className="nav-link active" href="/posts">Your Posts</a>
                             </li>
                             <li className="nav-item">
                                 {Auth.loggedIn() ? (<Logout />) : (<Link to="/login">Login</Link>)}

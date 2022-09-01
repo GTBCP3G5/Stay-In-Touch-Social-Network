@@ -7,6 +7,7 @@ import Auth from "../utils/auth";
 
 export default function PostList({ posts, title }) {
     
+
     const boldKanit = {
         fontFamily: "'Kanit', sans-serif",
         fontWeight: "400",
