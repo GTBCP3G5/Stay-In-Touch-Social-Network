@@ -6,7 +6,12 @@ import PostList from "../components/PostList";
 import { QUERY_POSTS } from "../utils/queries";
 
 export default function Home() {
-	const { loading, data } = useQuery(QUERY_POSTS);
+    const normalKanit = {
+        fontFamily: "'Kanit', sans-serif",
+        fontWeight: "200"
+    }
+
+    const { loading, data } = useQuery(QUERY_POSTS);
     console.log(data);
 	const posts = data?.posts || [];
     // console.log(this.posts)
@@ -20,6 +25,7 @@ export default function Home() {
 					placeholder="Search"
 					aria-label="Search"
 					aria-describedby="button-addon3"
+                    style={normalKanit}
 				/>
 				<span className="input-group-btn h-8">
 					<button

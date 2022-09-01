@@ -24,6 +24,8 @@ export default function Navbar () {
 
     const navLinks = {
         marginLeft: "2rem",
+        fontFamily: "'Kanit', sans-serif",
+        fontWeight: "100"
     }
 
     const navContainer = {
