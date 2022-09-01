@@ -14,9 +14,9 @@ export default function Home() {
 		// <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
 		<div className="flex justify-center items-center row mt-5 sm:mt-5 md:mt-0">
 			{/* Search Bar and Button */}
-			<div className="input-group mb-4 mt-4 w-50">
+			<div className="input-group mb-4 mt-4 w-75">
 				<input
-					className="form-control max-w-2xl min-w-50 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+					className="form-control min-w-50 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
 					placeholder="Search"
 					aria-label="Search"
 					aria-describedby="button-addon3"
@@ -32,7 +32,7 @@ export default function Home() {
 					</button>
 				</span>
 			</div>
-            <div className="flex justify-center">
+            <div className="flex justify-center items-end">
                 {loading ? (
                     <div>Loading...</div>
                 ) : (
