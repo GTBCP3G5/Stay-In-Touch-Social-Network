@@ -52,7 +52,7 @@ function App() {
 						/>
 						<Route
 							path="/home"
-							element={<Home />}
+							element={<Home/>}
 						/>
 						<Route
 							path="/create_post"
