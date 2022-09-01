@@ -82,7 +82,7 @@ export default function Navbar () {
     // For bigger screens
     else {
         currentNav = (
-            <nav className="nav bg-zinc-800">
+            <nav className="nav bg-zinc-800 sticky top-0">
             <ul style={navContainer} className="left hide-on-med-and-down text-green-400">
                 <li style={navLinks}>
                     <a href="/home">

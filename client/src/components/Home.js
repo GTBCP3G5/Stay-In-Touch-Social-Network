@@ -38,7 +38,7 @@ export default function Home() {
 					</button>
 				</span>
 			</div>
-            <div className="flex justify-center items-end">
+            <div className="flex justify-center items-end m-3">
                 {loading ? (
                     <div>Loading...</div>
                 ) : (
