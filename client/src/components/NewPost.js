@@ -7,7 +7,7 @@ import { QUERY_POSTS, QUERY_ME } from "../utils/queries";
 
 import Auth from "../utils/auth";
 
-export default function NewPost() {
+const NewPost = () => {
 	const [postText, setPostText] = useState("");
 
 	const [addPost, { error }] = useMutation(ADD_POST, {
@@ -22,13 +22,6 @@ export default function NewPost() {
 			} catch (e) {
 				console.error(e);
 			}
-
-			// update me object's cache
-			const { me } = cache.readQuery({ query: QUERY_ME });
-			cache.writeQuery({
-				query: QUERY_ME,
-				data: { me: { ...me, posts: [...me.posts, addPost] } },
-			});
 		},
 	});
 
@@ -62,7 +55,7 @@ export default function NewPost() {
 			<h1 className="text-2xl font-bold text-white">New Post</h1>
 
 			{Auth.loggedIn() ? (
-				<form className="mt-8 max-w-full" onSubmit={handleFormSubmit}>
+				<form className="mt-8 max-w-75" onSubmit={handleFormSubmit}>
 					<div className="grid grid-cols-1 gap-6">
 						<textarea
 							name="postText"
@@ -96,4 +89,6 @@ export default function NewPost() {
 			)}
 		</div>
 	);
-}
+};
+
+export default NewPost;
