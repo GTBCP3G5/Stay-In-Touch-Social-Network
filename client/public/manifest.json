@@ -20,20 +20,20 @@
 		{
 			"src": "android-chrome-192x192.png",
 			"sizes": "192x192",
-      "type": "image/png"
+			"type": "image/png"
 		},
 		{
 			"src": "android-chrome-512x512.png",
 			"sizes": "512x512",
-      "type": "image/png"
+			"type": "image/png"
 		},
-    {
+		{
 			"src": "logo-3.png",
 			"sizes": "any",
 			"type": "image/webp"
 		}
 	],
-	"start_url": ".",
+	"start_url": "https://stayintouchnetwork.herokuapp.com/",
 	"display": "standalone",
 	"theme_color": "#000000",
 	"background_color": "#ffffff"
