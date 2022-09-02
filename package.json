@@ -6,7 +6,7 @@
 	"engines": {
 		"node": "16.x"
 	},
-	"homepage": "https://stayintouchnetwork.herokuapp.com",
+	
 	"scripts": {
 		"start": "concurrently \"node server/server.js\" \"cd client && npm run start",
 		"develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
