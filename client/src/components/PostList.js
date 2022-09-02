@@ -1,48 +1,49 @@
-import React, { useState } from 'react';
-import { useMutation } from "@apollo/client";
-import { QUERY_USER } from "../utils/queries";
-import { ADD_FRIEND } from '../utils/mutations';
-import Auth from "../utils/auth"
+import React from 'react';
+// import { useMutation } from "@apollo/client";
+// import { QUERY_USER } from "../utils/queries";
+// import { ADD_FRIEND } from '../utils/mutations';
+// import Auth from "../utils/auth"
 
 export default function PostList({ posts, title }) {
-    const [friend, setFriend] = useState("");
+    // const [friend, setFriend] = useState("");
 
-    const [addFriend, { error }] = useMutation(ADD_FRIEND, {
-        update(cache, { data: { addFriend }}) {
-            try {
-                const { friends } = cache.readQuery({ query: QUERY_USER })
+    // const [addFriend, { error }] = useMutation(ADD_FRIEND, {
+    //     update(cache, { data: { addFriend }}) {
+    //         try {
+    //             const { friends } = cache.readQuery({ query: QUERY_USER })
 
-                cache.writeQuery({
-                    query: QUERY_USER,
-                    data: { friends: [addFriend, ...friends]}
-                })
-            } catch(e) {
-                console.log(e)
-            }
-        }
-    });
+    //             cache.writeQuery({
+    //                 query: QUERY_USER,
+    //                 data: { friends: [addFriend, ...friends]}
+    //             })
+    //         } catch(error) {
+    //             console.log(error)
+    //         }
+    //     }
+    // });
 
-    const handleFormSubmit = async () => {
-        try {
-            const { data } = await addFriend({
-                variables: {
-                    friend,
-                    username: Auth.getProfile().data.username,
-                    email: Auth.getProfile().data.email
-                }
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    // const handleFormSubmit = async (e) => {
+    //     e.preventDefault();
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
+    //     try {
+    //         const { data } = await addFriend({
+    //             variables: {...friend}, 
+    //         });
+                   
+    //         Auth.getProfile(data.username);
+    //         Auth.getProfile(data.email);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
-        if (name === "username" && value.length <= 1) {
-            setFriend(value);
-        }
-    }
+    // const handleChange = (event) => {
+    //     const { name, value } = event.target;
+
+    //     if (name === "username" && value.length <= 1) {
+    //         setFriend(value);
+    //     }
+    // }
 
     const boldKanit = {
         fontFamily: "'Kanit', sans-serif",
@@ -60,7 +61,10 @@ export default function PostList({ posts, title }) {
     }
 
     return (
-        <form className='w-75'>
+        <div 
+        className='w-75'
+        // onSubmit={handleFormSubmit}
+        >
             <h2 style={boldKanit} className="text-green-400">{title}</h2>
             {posts &&
             posts.map((post) => (
@@ -75,10 +79,12 @@ export default function PostList({ posts, title }) {
                         <p style={normalKanit}>{post.postText}</p>
                     </div>
                     <div class="flex space-x-2 m-2">
-                        <button type="submit" class="inline-block px-6 py-2.5 bg-sky-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-sky-400 hover:shadow-lg focus:bg-sky-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Add Friend</button>
+                        <button type="submit" class="inline-block px-6 py-2.5 bg-sky-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-sky-400 hover:shadow-lg focus:bg-sky-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" 
+                        // onChange={handleChange}
+                        >Add Friend</button>
                     </div>
                 </div>
             ))}
-        </form>
+        </div>
     )
 }
