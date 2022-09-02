@@ -92,7 +92,7 @@ const resolvers = {
       return await Post.findOneAndUpdate({ _id }, { postText }, { new: true });
     },
     removePost: async (parent, { postId }) => {
-      return Post.findOneAndDelete({ _id: postId });
+      return await Post.findOneAndDelete({ _id: postId });
     },
 
     // ROUTES FOR COMMENTS
