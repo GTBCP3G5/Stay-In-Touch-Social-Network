@@ -48,7 +48,7 @@ const YourPosts = () => {
 					<PostListUtil posts={user.posts} />
 
 					<div className="flex justify-center bg-zinc-800 rounded-lg shadow border hover:bg-sky-400 active:bg-green-500">
-						<Link className="text-white " to="/create-post">
+						<Link className="text-white " to="/create_post">
 							CLICK HERE TO ADD A NEW POST
 						</Link>
 					</div>
