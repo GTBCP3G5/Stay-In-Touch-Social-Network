@@ -9,7 +9,7 @@ export const QUERY_USER = gql`
       posts {
         _id
         postText
-		postAuthor
+        postAuthor
         createdAt
       }
     }
@@ -44,12 +44,14 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_FRIENDS = gql`
-  query friends {
-    friends {
-      _id
-      username
-      email
-      github
+  query friends($username: String!) {
+    user(username: $username) {
+      friends {
+        _id
+        username
+        email
+        github
+      }
     }
   }
 `;
