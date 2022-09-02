@@ -79,13 +79,13 @@ export default function Navbar() {
                       <li className="nav-item">
                         {Auth.loggedIn() ? (
                           <a className="nav-link active" href="/friends">
-                            Friends
+                            Users
                           </a>
                         ) : (
                           <div></div>
                         )}
                       </li>
-                      <li className="nav-item">
+                      {/* <li className="nav-item">
                         {Auth.loggedIn() ? (
                           <a className="nav-link active" href="/favorites">
                             Favorites
@@ -93,7 +93,7 @@ export default function Navbar() {
                         ) : (
                           <div></div>
                         )}
-                      </li>
+                      </li> */}
                       <li className="nav-item">
                         {Auth.loggedIn() ? (
                           <a className="nav-link active" href="/posts">
@@ -146,13 +146,13 @@ export default function Navbar() {
           <li style={navLinks}>
             {Auth.loggedIn() ? (
               <a className="text-green-400" href="/friends">
-                Friends
+                Users
               </a>
             ) : (
               <div></div>
             )}
           </li>
-          <li style={navLinks}>
+          {/* <li style={navLinks}>
             {Auth.loggedIn() ? (
               <a className="text-green-400" href="/favorites">
                 Favorites
@@ -160,7 +160,7 @@ export default function Navbar() {
             ) : (
               <div></div>
             )}
-          </li>
+          </li> */}
           <li style={navLinks}>
             {Auth.loggedIn() ? (
               <a className="text-green-400" href="/posts">
