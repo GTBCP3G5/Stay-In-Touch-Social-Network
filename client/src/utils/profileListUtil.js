@@ -1,6 +1,24 @@
 import React from "react";
+import { useMutation } from "@apollo/client";
+import { DELETE_POST } from "./mutations";
 
 const PostList = ({ posts }) => {
+	const [removePost, { error }] = useMutation(DELETE_POST);
+
+	const handleDelete = async (event) => {
+		event.preventDefault();
+
+		try {
+			const {data} = await removePost({
+				variables: {
+					
+				},
+			});
+		} catch (err) {
+			console.error(err);
+		}
+	};
+
 	const boldKanit = {
 		fontFamily: "'Kanit', sans-serif",
 		fontWeight: "400",
@@ -28,9 +46,19 @@ const PostList = ({ posts }) => {
 								You posted this on {post.createdAt}
 							</span>
 						</h4>
-						<div className="m-3 text-zinc-800">
+						<div className="inline-flex m-3 text-zinc-800">
 							<p style={normalKanit}>{post.postText}</p>
 						</div>
+						<button
+							type="button"
+							name={post._id}
+							onClick={handleDelete}
+							className="w-8 mx-3 mb-2 border border-black outline outline-2 rounded"
+						>
+							<span className="material-icons inline-flex">
+								delete
+							</span>
+						</button>
 					</div>
 				))}
 		</div>
