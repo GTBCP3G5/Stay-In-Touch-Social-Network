@@ -65,9 +65,10 @@ export default function Navbar () {
                             <li className="nav-item">
                                 {Auth.loggedIn() ? (<Logout />) : (<div></div>)}
                                 <a className="nav-link active" href="/posts">Your Posts</a>
+                                {Auth.loggedIn() ? (<a className="nav-link active" href="/posts">Your Posts</a>) : (<div></div>)}
                             </li>
                             <li className="nav-item">
-                                {Auth.loggedIn() ? (<Logout />) : (<Link to="/login">Login</Link>)}
+                                {Auth.loggedIn() ? (<Logout />) : (<div></div>)}
                             </li>
                             </ul>
                         </div>
@@ -106,7 +107,7 @@ export default function Navbar () {
                 </li>
 
                 <li style={navLinks}>
-                    <a className='text-green-400' href="/posts">Your Posts</a>
+                    {Auth.loggedIn() ? (<a className="text-green-400" href="/posts">Your Posts</a>) : (<div></div>)}
                 </li>
                 <li style={navLinks} className="text-green-400">
                     {Auth.loggedIn() ? (<Logout />) : (<div></div>)}

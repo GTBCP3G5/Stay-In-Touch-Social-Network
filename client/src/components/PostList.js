@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useMutation } from "@apollo/client";
 import { QUERY_USER } from "../utils/queries";
-import { QUERY_ME } from '../utils/queries';
 
-import Auth from "../utils/auth";
 
 export default function PostList({ posts, title }) {
-    
+    const [friend, setFriend] = useState("");
+
+    const [addFriend, { error }] = useMutation()
 
     const boldKanit = {
         fontFamily: "'Kanit', sans-serif",
