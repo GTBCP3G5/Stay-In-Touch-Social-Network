@@ -7,22 +7,24 @@
 		"node": "16.x"
 	},
 	"scripts": {
-		"start": "node server/server.js",
+		"start": "concurrently \node server/server.js && cd client && npm run start",
 		"develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
 		"install": "cd server && npm i && cd ../client && npm i",
 		"seed": "cd server && npm run seed",
-		"build": "cd client && npm run build"
+		"build": "cd client && npm run build",
+		"heroku-postbuild": "npm run install-client && npm run build"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "MIT",
 	"devDependencies": {
+		"concurrently": "7.3.0",
 		"eslint": "8.23.0",
-		"eslint-config-prettier": "8.5.0",
-		"concurrently": "7.3.0"
+		"eslint-config-prettier": "8.5.0"
 	},
 	"dependencies": {
 		"apollo-server-express": "^3.10.2",
+		"dotenv": "^16.0.2",
 		"express": "^4.18.1",
 		"graphql": "^16.6.0"
 	}
