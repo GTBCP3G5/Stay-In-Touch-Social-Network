@@ -1,46 +1,48 @@
 // Package for react and hooks
-import React, { useState, useEffect } from 'react';
-import Logout from '../components/Logout';
-import { Link } from 'react-router-dom';
-import Auth from '../utils/auth';
+import React, { useState, useEffect } from "react";
+import Logout from "../components/Logout";
+import { Link } from "react-router-dom";
+import Auth from "../utils/auth";
+// import "../App.css";
 
-export default function Navbar () {
-    // Set width of window to current window size
-    const [width, setWidth] = React.useState(window.innerWidth);
-    
-    // Resize based on current window size
-    React.useEffect(() => {
-        window.addEventListener("resize", updateWidth);
-    })
+export default function Navbar() {
+  // Set width of window to current window size
+  const [width, setWidth] = React.useState(window.innerWidth);
 
-    const updateWidth = () => {
-        setWidth(window.innerWidth);
-    }
+  // Resize based on current window size
+  React.useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+  });
 
-    // Value to hold Navbar
-    let currentNav;
+  const updateWidth = () => {
+    setWidth(window.innerWidth);
+  };
 
-    // Styling
+  // Value to hold Navbar
+  let currentNav;
 
-    const navLinks = {
-        marginLeft: "2rem",
-        fontFamily: "'Kanit', sans-serif",
-        fontWeight: "100"
-    }
+  // Styling
 
-    const navContainer = {
-        display: "flex",
-        alignItems: "center"
-    }
+  const navLinks = {
+    marginLeft: "2rem",
+    fontFamily: "'Kanit', sans-serif",
+    fontWeight: "100",
+  };
 
-    // For smaller screens
-    if(width < 1000) {
-        currentNav = (
-        <div>
-            <div className="" id="navbarToggleExternalContent">
-                <div className="p-4">
-                    {/* <h5 className="text-white h4">Collapsed content</h5>
+  const navContainer = {
+    display: "flex",
+    alignItems: "center",
+  };
+
+  // For smaller screens
+  if (width < 1000) {
+    currentNav = (
+      <div>
+        <div className="" id="navbarToggleExternalContent">
+          <div className="p-4">
+            {/* <h5 className="text-white h4">Collapsed content</h5>
                     <span className="text-muted">Toggleable via the navbar brand.</span> */}
+
                     <nav className="bg-zinc-800 navbar fixed-top">
                     <div className="container-fluid">
                         {/* <a className="navbar-brand" href="#">Offcanvas navbar</a> */}
@@ -73,10 +75,15 @@ export default function Navbar () {
                         </div>
                     </div>
                     </nav>
+
                 </div>
-            </div>
+              </div>
+            </nav>
+          </div>
         </div>
-        )
+      </div>
+    );
+  }
 
     } 
     
@@ -110,9 +117,5 @@ export default function Navbar () {
         )
     }
 
-    return (
-    <div>
-        {currentNav}
-    </div>
-    )
+  return <div>{currentNav}</div>;
 }

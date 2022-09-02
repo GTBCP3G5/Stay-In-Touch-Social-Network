@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import { useQuery } from "@apollo/client";
-
+import "../App.css";
 import PostList from "../components/PostList";
 
 import { QUERY_POSTS } from "../utils/queries";
@@ -50,5 +50,7 @@ export default function Home() {
             </div>
 		</div>
         </div>
-	);
+      </div>
+    </div>
+  );
 }
