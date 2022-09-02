@@ -8,19 +8,19 @@ This project is a way for graduates of our coding bootcamp cohort to stay in tou
 
 **The deployed app can be found [HERE](linkhere)**
 
-## Table of Contents 
+## Table of Contents
 
-* [Installation](#installation)
+- [Installation](#installation)
 
-* [Usage](#usage)
+- [Usage](#usage)
 
-* [License](#license)
- 
-* [Testing](#testing)
- 
-* [Project Development Team](#project-development-team)
+- [License](#license)
 
-* [Questions](#questions)
+- [Testing](#testing)
+
+- [Project Development Team](#project-development-team)
+
+- [Questions](#questions)
 
 ## Installation
 
@@ -37,7 +37,8 @@ To begin running the app's front- and back-end, run the following command in the
 ```
 npm run develop
 ```
-*Note: Other command line scripts can be found in the `package.json` files within the root, client, and server directories of the project*
+
+_Note: Other command line scripts can be found in the `package.json` files within the root, client, and server directories of the project_
 
 ## License
 
@@ -49,11 +50,17 @@ This project is licensed under the MIT license. Learn more [HERE](LICENSE)
 
 ## Project Demo
 
-    **_ THIS IS A PLACEHOLDER FOR AN IMAGE OR SCREEN RECORDING OF THE PROJECT _**
+![alt text](/client/public/image.png)
+
+![alt text](/client/public/image1.png)
+
+![alt text](/client/public/image2.png)
+
+![alt text](/client/public/image3.png)
 
 ## Testing
 
-To initiate the unit tests for this app, run the following command in the console/command line at the root level of the project: 
+To initiate the unit tests for this app, run the following command in the console/command line at the root level of the project:
 
 ```
 npm test
@@ -76,11 +83,15 @@ If you have any questions about this app, please contact us through our GitHub p
 Thank you for checking out our work!
 
 <!-- EHW SIGNET
----------
+
     |
-  -----
+
+---
+
     |
----------
- -->
+
+---
+
+-->
 
 ### -Cat, Josh, Kimberly, and Eric

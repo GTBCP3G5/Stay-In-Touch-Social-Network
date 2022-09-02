@@ -8,7 +8,7 @@ import Register from "./components/Register";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
-import Friends from "./components/Friends";
+import Friends from "./components/Friends.jsx";
 import Favorites from "./components/Favorites";
 import NewPost from "./components/NewPost";
 import YourPosts from "./components/YourPosts"
