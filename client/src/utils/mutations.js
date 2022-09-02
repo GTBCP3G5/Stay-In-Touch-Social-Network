@@ -54,3 +54,14 @@ export const ADD_COMMENT = gql`
 		}
 	}
 `;
+
+export const ADD_FRIEND = gql`
+	mutation addFriend($username: String, $email: String) {
+		addFriend(username: $username, email: $email) {
+			_id
+			username
+			email
+		}
+	}
+
+`
