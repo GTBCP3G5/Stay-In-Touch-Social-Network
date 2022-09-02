@@ -21,7 +21,8 @@
     "username": "Cat",
     "email": "kbeck@techfriends.dev",
     "password": "password04",
-    "github": "catkitty"
+    "github": "catkitty",
+    "friends": ["6310cdac3a244d788bb8ad86"]
   },
   {
     "username": "Kimberly",
