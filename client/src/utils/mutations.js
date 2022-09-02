@@ -43,13 +43,6 @@ export const DELETE_POST = gql`
 	mutation removePost($postId: ID!) {
 		removePost(postId: $postId) {
 			_id
-			postText
-			postAuthor
-			createdAt
-			comments {
-				_id
-				commentText
-			}
 		}
 	}
 `

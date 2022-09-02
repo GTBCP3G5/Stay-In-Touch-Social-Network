@@ -2,7 +2,6 @@ import React from "react";
 import { Navigate, useParams, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-import NewPost from "./NewPost";
 import PostListUtil from "../utils/profileListUtil";
 
 import { QUERY_ME, QUERY_USER } from "../utils/queries";

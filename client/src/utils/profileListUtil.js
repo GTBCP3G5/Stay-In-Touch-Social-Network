@@ -9,11 +9,7 @@ const PostList = ({ posts }) => {
 		event.preventDefault();
 
 		try {
-			const {data} = await removePost({
-				variables: {
-					
-				},
-			});
+			const {data} = await removePost(event.target._id);
 		} catch (err) {
 			console.error(err);
 		}
