@@ -82,7 +82,7 @@ If you have any questions about this app, please contact us through our GitHub p
 
 Thank you for checking out our work!
 
-## <!-- EHW SIGNET
+<!-- EHW SIGNET
 
     |
 
