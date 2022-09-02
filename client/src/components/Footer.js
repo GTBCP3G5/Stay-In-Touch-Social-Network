@@ -12,7 +12,8 @@ export default function Footer () {
         margin: "1rem"
     }
     return (
-        <div className="bg-zinc-800" style={footerContainer}>
+        
+        <div className="bg-zinc-800 sticky bottom-0 w-100" style={footerContainer}>
             <a href="https://github.com/catcueto">
                 <img style={avatar} src="cat-avatar.png" alt="Catalina's Avatar"/>
             </a>
