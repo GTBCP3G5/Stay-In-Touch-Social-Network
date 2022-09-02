@@ -178,5 +178,6 @@ export default function Navbar() {
     );
   }
 
+
   return <div>{currentNav}</div>;
 }
