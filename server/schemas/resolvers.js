@@ -8,7 +8,10 @@ const resolvers = {
   // GET routes for users
   Query: {
     users: async () => {
-      return User.find({}).populate("posts");
+      return User.find({})
+        .populate("username")
+        .populate("email")
+        .populate("github");
     },
     user: async (parent, _id) => {
       return User.findById(_id).populate("posts");
@@ -31,8 +34,9 @@ const resolvers = {
     },
 
     // find user based on id and populate friends
-    friends: async (parent, { _id }) => {
-      return await User.findOne({ _id }).populate("friends");
+    friends: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return await User.find(params).populate("friends");
     },
     favorites: async (parent, { _id }) => {
       return await User.find({ _id }).populate("favorites");
