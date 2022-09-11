@@ -6,7 +6,7 @@
 
 This project is a way for graduates of our coding bootcamp cohort to stay in touch after graduation! Users will be able to make posts, add friends, keep a list of favorite posts, and more!
 
-**The deployed app can be found [HERE](linkhere)**
+**The deployed app can be found [HERE](https://stayintouchnetwork.herokuapp.com/)**
 
 ## Table of Contents
 
